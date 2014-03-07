@@ -27,10 +27,9 @@ void testApp::setup(){
 void testApp::update(){
     
     for (int i=0; i<myBalls.size(); i++) {
-    
         if (myBalls[i].get()->bRemove) {
-//          box2d.world->DestroyBody(myBalls[i].get()->body);
             myBalls[i].get()->destroy();
+            myBalls.erase(myBalls.begin()+i);
         }
     }
     
