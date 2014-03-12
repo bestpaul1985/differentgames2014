@@ -4,7 +4,7 @@
 void testApp::setup(){
     
     ofEnableAlphaBlending();
-    ofSetCircleResolution(150);
+    ofSetCircleResolution(60);
     imageLoader();
     
     box2d.init();
