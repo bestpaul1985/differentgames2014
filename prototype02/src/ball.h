@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 #define otherObjsCount 2
+enum E_ID{ID_TOP_BALL, ID_BOT_BALL};
 
 class Ball{
     public:
@@ -14,8 +15,10 @@ class Ball{
         void collision(Ball& b1);
         void changeRadius();
         void follow();
+        void chcekFollower(ofRectangle rect);
         void joint();
         void addDampingForce();
+        void checkFinalized();
     
         ofVec3f location;
         ofVec3f velocity;
@@ -24,17 +27,23 @@ class Ball{
         float maximum_velocity;
         // How bouncy are we? 1 means we don't lose any speed in bouncing,
         // higher means we gain speed, lower means we lose it
-        float bounce;
-        float radius;
-        float damping;
-        int touchID;
-        ofColor color;
-        bool bFinalized;
-        bool bFolloer;
-        bool bJoint;
+        float           bounce;
+        float           radius;
+        float           damping;
+        float           alpha;
+        int             touchID;
+        ofColor         color;
+        bool            bFinalized;
+        bool            bFolloer;
+        bool            bJoint;
+        bool            bFixed;
+        bool            bCollided;
+    
+    
+        ofPoint         followPos;
+        ofPoint         anchor;
+        E_ID            ballID;
 
-        ofPoint followPos;
-        ofPoint anchor;
     
 
 

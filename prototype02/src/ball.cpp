@@ -3,15 +3,17 @@
 
 Ball::Ball() {
 	mass = ofRandom(3.0) + 1.0;
-	bounce = 0.9;
+	bounce = 0.8;
 	location.x = ofRandom(ofGetWidth());
 	location.y = 0;
-    radius = 30;
+    radius = 20;
     touchID = -1;
-    damping = 0.01f;
+    damping = 0.015f;
     bFinalized = false;
     bFolloer = true;
     bJoint = true;
+    bFixed = false;
+    alpha = 50;
 }
 //--------------------------------------------------------------
 void Ball::update() {
@@ -41,18 +43,25 @@ void Ball::update() {
 }
 //--------------------------------------------------------------
 void Ball::draw() {
-    if (bFinalized) {
-        ofSetColor(color);
-    }else{
-        ofSetColor(255,100);
+    
+    if(bFixed &&velocity.length() < 0.05){
+        alpha = 255;
     }
+    else if (bFinalized && !bFolloer) {
+        alpha = 150;
+    }else if (bFinalized && bFolloer) {
+        alpha = 100;
+    }
+    
+    
+    ofSetColor(color,alpha);
     ofCircle(location.x, location.y, radius);
 }
 
 //--------------------------------------------------------------
 void Ball::collision(Ball& b1)
 {	
-	cout << b1.mass << " " << b1.location.x << " " << b1.location.y << endl;
+//	cout << b1.mass << " " << b1.location.x << " " << b1.location.y << endl;
     // we'll just declare all these things we'll need at once
     float newMass, diff, angle, newX, newY, newVelocityX, newVelocityY, fy21, sign;
 	
@@ -67,6 +76,9 @@ void Ball::collision(Ball& b1)
     if ( (newVelocityX*newX + newVelocityY*newY) >= 0) return;
 	
     fy21=fabs(newY);
+    
+    fy21=1.0E-12*fabs(b1.location.y);
+    
     if ( fabs(newX)<fy21 ) {
         if (newX<0) { sign=-1; } else { sign=1;}
         newX=fy21*sign;
@@ -80,6 +92,7 @@ void Ball::collision(Ball& b1)
     b1.velocity.y = b1.velocity.y + angle * diff;
 	velocity.x = velocity.x - newMass * diff;
     velocity.y = velocity.y - angle * newMass * diff;
+    velocity *= 0.8;
 	
 }
 
@@ -105,25 +118,23 @@ void Ball::changeRadius(){
 //--------------------------------------------------------------
 void Ball::follow(){
 
-    if (bFolloer) {
+    if (bFolloer && !bCollided) {
        
+        float maxSpeed = 25;
         ofPoint desired = followPos - location;
         float d = desired.length();
         desired.normalize();
         
-        if (d < 100) {
-            float m = ofMap(d,0,radius,0,30);
+        if (d < radius) {
+            float m = ofMap(d,0,radius,0,maxSpeed);
             desired *= m;
         }else{
-            desired *= 30;
+            desired *= maxSpeed;
         }
         
         ofPoint steer;
         steer = desired - velocity;
-        steer.getLimited(50);
         addForce(steer);
-        
-        cout<<steer<<endl;
     }
    
 }
@@ -154,8 +165,17 @@ void Ball::addDampingForce(){
     acceleration.y = acceleration.y - velocity.y * damping;
 }
 
+//--------------------------------------------------------------
+void Ball::chcekFollower(ofRectangle rect){
 
-
-
+    if (rect.inside(location)) {
+        bFolloer = false;
+        bFixed = true;
+    }else{
+        bFixed = false;
+    }
+    
+  
+}
 
 
