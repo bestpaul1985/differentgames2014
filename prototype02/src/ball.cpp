@@ -103,18 +103,7 @@ void Ball::addForce( ofVec2f force ) {
 	acceleration += force; // the acceleration is affected by the force
 }
 
-//--------------------------------------------------------------
-void Ball::changeRadius(){
 
-    if (!bFinalized) {
-        radius ++;
-        if (radius>50) {
-            radius = 50;
-            bFinalized = true;
-        }
-    }
-
-}
 //--------------------------------------------------------------
 void Ball::follow(){
 

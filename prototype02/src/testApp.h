@@ -3,10 +3,9 @@
 #include "ofMain.h"
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
-#include "ball.h"
-#include "field.h"
-
-enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL};
+#include "baseScene.h"
+#include "gamePlay.h"
+#include "menu.h"
 
 class testApp : public ofxiOSApp{
 	
@@ -29,15 +28,12 @@ class testApp : public ofxiOSApp{
         void gotMemoryWarning();
         void deviceOrientationChanged(int newOrientation);
         void checkCollision();
+        void imageLoader();
 
+        baseScene  * scenes[2];
     
-        field           myField;
-        vector <Ball>   myBalls;
-        float           radius;
-        E_OPTION        touchOption;
-    
-    
-        
+        int currentScene;
+        menu myMenu;
 
 };
 

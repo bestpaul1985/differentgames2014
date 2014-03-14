@@ -6,6 +6,7 @@
 enum E_ID{ID_TOP_BALL, ID_BOT_BALL};
 
 class Ball{
+    
     public:
         Ball();
 
@@ -13,7 +14,6 @@ class Ball{
         void update();
         void draw();
         void collision(Ball& b1);
-        void changeRadius();
         void follow();
         void chcekFollower(ofRectangle rect);
         void joint();
@@ -42,6 +42,7 @@ class Ball{
     
         ofPoint         followPos;
         ofPoint         anchor;
+        //top ball or bot ball?
         E_ID            ballID;
 
     

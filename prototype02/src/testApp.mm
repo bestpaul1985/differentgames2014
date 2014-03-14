@@ -7,38 +7,41 @@ void testApp::setup(){
 	ofSetCircleResolution(90);
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();
-	ofBackground(51, 51, 51);
+    ofTrueTypeFont::setGlobalDpi(72);
+
+    currentScene = 0;
     
-    radius = 20;
-    myField.setup();
+    scenes[0] = new menu();
+    scenes[1] = new gameplay();
+    
+    scenes[0]->setup();
+    scenes[1]->setup();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
-    checkBallRadius();
+    scenes[currentScene]->update();
     
-	for(int i=0; i<myBalls.size(); i++) {
-        myBalls[i].chcekFollower(myField.midRect);
-        myBalls[i].follow();
-        myBalls[i].addDampingForce();
-		myBalls[i].update();
-	}
-    
-
-	checkCollision();
-    
+    if(((menu*)scenes[0])->isDone()){
+        
+        currentScene = 1;
+        
+        if (((menu*)scenes[0])->bTrap()) {
+            ((gameplay*)scenes[1])->setTrap();
+        }
+        if (((menu*)scenes[0])->bEat()) {
+            ((gameplay*)scenes[1])->setEat();
+        }
+        
+    }
     
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    myField.draw();
-    
-    for(int i=0; i<myBalls.size(); i++) {
-		myBalls[i].draw();
-	}
+   scenes[currentScene]->draw();
 }
 
 //--------------------------------------------------------------
@@ -50,136 +53,21 @@ void testApp::exit(){
 //--------------------------------------------------------------
 void testApp::touchDown(ofTouchEventArgs & touch){
   
-    ofPoint touchPos(touch.x,touch.y);
-    bool bInitial = true;
-    touchOption = NO_INITI;
-    int num;
-    
-    if (myField.topRect.inside(touchPos)){
-        
-        float dis;
-        for (int i=0; i<myBalls.size(); i++) {
-            dis = myBalls[i].location.distance(touchPos);
-            if (dis <myBalls[i].radius+radius) {
-                bInitial = false;
-                if (dis<myBalls[i].radius && myBalls[i].bFinalized) {
-                    touchOption = DRAG_TOP_BALL;
-                    num = i;
-                }
-                break;
-            }
-        }
-        
-        if (bInitial) {
-            touchOption = INITI_TOP_BALL;
-        }
-
-    }
-    else if(myField.botRect.inside(touchPos)){
-      
-        float dis;
-        for (int i=0; i<myBalls.size(); i++) {
-            dis = myBalls[i].location.distance(touchPos);
-            if (dis <myBalls[i].radius+radius) {
-                bInitial = false;
-                if (dis<myBalls[i].radius&& myBalls[i].bFinalized) {
-                    touchOption = DRAG_BOT_BALL;
-                    num = i;
-                }
-                break;
-            }
-        }
-        
-        if (bInitial) {
-            touchOption = INITI_BOT_BALL;
-        }
-    }
-  
-    
-    
-    switch (touchOption) {
-            
-        case INITI_TOP_BALL:{
-            
-            Ball temp;
-            temp.location.set(touchPos);
-            temp.bounce = 1;
-            temp.color.set(0,255,30);
-            temp.mass = ofRandom(3.0) + 1.0;
-            temp.bounce = 0.9;
-            temp.radius = radius;
-            temp.touchID = touch.id;
-            temp.followPos.set(touchPos);
-            temp.ballID = ID_TOP_BALL;
-            myBalls.push_back(temp);
-            
-        
-        }
-            break;
-        case INITI_BOT_BALL:{
-            
-            Ball temp;
-            temp.location.set(touchPos);
-            temp.bounce = 1;
-            temp.color.set(255,0,30);
-            temp.mass = ofRandom(3.0) + 1.0;
-            temp.bounce = 0.9;
-            temp.radius = radius;
-            temp.touchID = touch.id;
-            temp.followPos.set(touchPos);
-            temp.ballID = ID_BOT_BALL;
-            myBalls.push_back(temp);
-            
-        }
-            break;
-        case DRAG_TOP_BALL:{
-            
-            if (myBalls[num].ballID==ID_TOP_BALL) {
-                myBalls[num].bFolloer = true;
-                myBalls[num].followPos.set(touchPos);
-            }
-          
-            
-        }
-            break;
-        case DRAG_BOT_BALL:{
-            if (myBalls[num].ballID==ID_BOT_BALL) {
-                myBalls[num].bFolloer = true;
-                myBalls[num].followPos.set(touchPos);
-            }
-        }
-            break;
-            
-            
-    }
-    
-    
-    
-    
-    
+    scenes[currentScene]->touchDown(touch);
 }
 
 //--------------------------------------------------------------
 void testApp::touchMoved(ofTouchEventArgs & touch){
-    ofPoint touchPos(touch.x,touch.y);
-    for (int i=0; i<myBalls.size(); i++) {
-        if (myBalls[i].touchID == touch.id && myBalls[i].bFolloer) {
-            myBalls[i].followPos.set(touchPos);
-        }
-    }
-    
+   
+    scenes[currentScene]->touchMoved(touch);
+
 }
 
 //--------------------------------------------------------------
 void testApp::touchUp(ofTouchEventArgs & touch){
  
-    for (int i=0; i<myBalls.size(); i++) {
-        if (myBalls[i].touchID == touch.id ) {
-            myBalls[i].bFinalized = true;
-            myBalls[i].bFolloer = false;
-        }
-    }
-    
+    scenes[currentScene]->touchUp(touch);
+   
 }
 
 //--------------------------------------------------------------
@@ -213,54 +101,20 @@ void testApp::deviceOrientationChanged(int newOrientation){
 }
 //--------------------------------------------------------------
 void testApp::checkCollision(){
-
-  
-    for(int i=0; i<myBalls.size(); i++) {
-        bool bCollied = false;
-        for(int j=i+1; j<myBalls.size(); j++) {
-            if(ofDist(myBalls[i].location.x, myBalls[i].location.y, myBalls[j].location.x, myBalls[j].location.y) <= myBalls[i].radius+myBalls[j].radius) {
-				myBalls[i].collision( myBalls[j] );
-                bCollied = true;
-            }
-        }
-        
-        if (bCollied) {
-            myBalls[i].bCollided = true;
-            cout<<i<<endl;
-        }else{
-            myBalls[i].bCollided = false;
-        }
-        
-        
-    }
-    
     
 }
 
 //--------------------------------------------------------------
 void testApp::checkBallRadius(){
-    
-    for(int i=0; i<myBalls.size(); i++) {
-        if (!myBalls[i].bFinalized) {
-            for(int j=0; j<myBalls.size(); j++) {
-                if (i!=j) {
-                    if(ofDist(myBalls[i].location.x, myBalls[i].location.y, myBalls[j].location.x, myBalls[j].location.y) <= myBalls[i].radius+myBalls[j].radius) {
-                        myBalls[i].bFinalized = true;
-                        myBalls[j].bFinalized = true;
-                    }
-                }
-            }
-        }
-    }
-    
-    
-    for(int i=0; i<myBalls.size(); i++) {
-        myBalls[i].changeRadius();
-    }
+   
     
 }
 //--------------------------------------------------------------
+void testApp::imageLoader(){
 
+    scenes[currentScene]->imageLoader();
+
+}
 
 
 

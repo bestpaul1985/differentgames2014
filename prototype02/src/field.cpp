@@ -3,6 +3,7 @@
 field::field(){
 
 }
+//--------------------------------------------------------------
 
 void field::setup(){
 
@@ -12,11 +13,13 @@ void field::setup(){
     botRect.set(0, ofGetHeight()-h, ofGetWidth(), ofGetHeight());
     midRect.set(0, h,ofGetWidth(), ofGetHeight()-h*2);
 }
+//--------------------------------------------------------------
 
 void field::update(){
 
     
 }
+//--------------------------------------------------------------
 
 void field::draw(){
     
