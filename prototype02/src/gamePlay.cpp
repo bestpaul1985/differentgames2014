@@ -301,9 +301,9 @@ void gameplay::setEat(){
 //--------------------------------------------------------------
 void gameplay::addEat(Ball A,Ball B, int a, int b){
 
-    if (bEat) {
+    if (bEat && A.ballID != B.ballID ) {
         
-        if (A.radius>B.radius) {
+        if (A.radius>B.radius ) {
             
             if (A.ballID == ID_TOP_BALL) {
 
