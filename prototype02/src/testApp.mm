@@ -20,10 +20,10 @@ void testApp::setup(){
     gui.setup("What is in your mind ?");
     gui.add(trap.set("trap", false));
     gui.add(eat.set("eat", false));
-    gui.add(radiusMax.set( "Radius", 2, 1, 4));
-    gui.add(bounce.set( "Bounce", 2, 1, 4));
-    gui.add(friction.set( "Friction", 2, 1, 4));
-    gui.add(matter.set( "Matter", 2, 1, 4));
+    gui.add(radiusMax.set( "Radius", 1, 1, 4));
+    gui.add(bounce.set( "Bounce", 1, 1, 4));
+    gui.add(friction.set( "Friction", 1, 1, 4));
+    gui.add(matter.set( "Matter", 3, 1, 4));
     gui.add(done.setup("done"));
     
     // we set scenes here
@@ -128,15 +128,15 @@ void testApp::imageLoader(){
 //--------------------------------------------------------------
 void testApp::menu_done(){
     
-    float myBounce = ofMap(bounce, 1, 4, 0.0f, 1.0f);
-    float myFriction = ofMap(friction, 1, 4, 0.005f, 0.03f);
-    int myRadiusMax = ofMap(radiusMax, 1, 4, 40, 80);
-    int matterTotal = ofMap(radiusMax, 1, 4, 100, 400);
+    float myBounce = ofMap(bounce, 1, 4, 0.2f, 1.0f);
+    float myFriction = ofMap(friction, 1, 4, 0.015f, 0.09f);
+    int myRadiusMax = ofMap(radiusMax, 1, 4, 40, 120);
+    int matterAmount= ofMap(radiusMax, 1, 4, 100, 400);
 
     ((gameplay*)scenes[1])->setBounce(myBounce);
     ((gameplay*)scenes[1])->setFriction(myFriction);
     ((gameplay*)scenes[1])->setRadiusMax(myRadiusMax);
-    ((gameplay*)scenes[1])->setMatter(matterTotal);
+    ((gameplay*)scenes[1])->setMatter(matterAmount);
     ((gameplay*)scenes[1])->setEat(eat);
     ((gameplay*)scenes[1])->setTrap(trap);
 

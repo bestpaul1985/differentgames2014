@@ -89,7 +89,7 @@ void Ball::collision(Ball& b1)
     b1.velocity.y = b1.velocity.y + angle * diff;
 	velocity.x = velocity.x - newMass * diff;
     velocity.y = velocity.y - angle * newMass * diff;
-    velocity *= 0.8;
+    velocity *= bounce;
 	
 }
 

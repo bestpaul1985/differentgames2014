@@ -192,12 +192,8 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             myBalls[num].bFolloer = true;
             myBalls[num].followPos.set(touchPos);
             myBalls[num].touchID = touch.id;
-            
-            cout<<"ok3"<<endl;
-        }
+            }
             break;
-            
-            
     }
     
     
@@ -408,8 +404,6 @@ void gameplay::setMassMax(int MassMax){
 void gameplay::setMatter(int Matter){
     myMatter[0].amount = Matter;
     myMatter[1].amount = Matter;
-    myMatter[0].totalAmount = Matter;
-    myMatter[1].totalAmount = Matter;
 };
 
 

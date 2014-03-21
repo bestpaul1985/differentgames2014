@@ -3,7 +3,7 @@
 matter::matter(){
     
     color.set(134, 60, 227);
-
+    totalAmount = 400;
 }
 
 void matter::initial(int Num){
