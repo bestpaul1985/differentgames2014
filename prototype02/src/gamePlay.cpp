@@ -3,8 +3,7 @@
 
 //--------------------------------------------------------------
 void gameplay::setup(){
-	
-   
+
     myField.setup();
     imageLoader();
     myMatter[0].initial(0);
@@ -14,10 +13,6 @@ void gameplay::setup(){
     bEat = false;
     massMax = 5;
     radiusMin = 20;
-//    friction = 0.015f;
-//    bounce = 0.8;
-//    radiusMax = 50;
-//    massMax = 5;
 }
 
 //--------------------------------------------------------------
