@@ -3,9 +3,10 @@
 
 #include "ofMain.h"
 #include "baseScene.h"
-#include "Button.h"
+#include "ofxGui.h"
 
-#define Menu_Num 3
+
+
 class menu :public baseScene{
     
     void setup();
@@ -21,7 +22,19 @@ public:
     void reset();
     bool bTrap();
     bool bEat();
-    button myMenu[Menu_Num];
+   
     
+    bool bDone;
+    
+    ofxPanel gui;
+    ofxButton done;
+
+
+    ofParameter<float> speed;
+    ofParameter<float> friction;
+    ofParameter<float> bounce;
+    ofParameter<bool> trap;
+    ofParameter<bool> eat;
+\
 };
 #endif

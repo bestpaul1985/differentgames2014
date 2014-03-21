@@ -23,12 +23,12 @@ class Ball{
         ofVec3f location;
         ofVec3f velocity;
         ofVec3f acceleration;
-        float mass; // how heavy are we?
-        float maximum_velocity;
+        float           maximum_velocity;
         // How bouncy are we? 1 means we don't lose any speed in bouncing,
         // higher means we gain speed, lower means we lose it
+        float           mass,massMax; // how heavy are we?
         float           bounce;
-        float           radius;
+        float           radius,radiusMax;
         float           damping;
         float           alpha;
         int             touchID;

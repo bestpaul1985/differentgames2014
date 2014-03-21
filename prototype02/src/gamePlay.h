@@ -6,7 +6,7 @@
 #include "matter.h"
 #include "trap.h"
 
-enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL};
+enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL, DRAG_MID_BALL, DRAG_BALL};
 
 class gameplay :public baseScene{
     
@@ -27,20 +27,36 @@ class gameplay :public baseScene{
     
     
 public:
-    void setTrap();
-    void setEat();
     void addTrap();
     void addEat(Ball A,Ball B, int a, int b);
 
+    //setup ball paramater
+    void setTrap(bool trap);
+    void setEat(bool eat);
+    void setFriction(float Friction);
+    void setBounce(float Bounce);
+    void setRadiusMax(float RadiusMax);
+    void setRadiusMin(float RadiusMin);
+    void setMatter(int Matter);
+    void setMassMax(int MassMax);
+ 
+    
+
+
+
+
+
     field           myField;
-    vector <Ball>   myBalls;
-    float           radius;
-    E_OPTION        touchOption;
-    
     matter          myMatter[2];
-    ofImage         image[3];
-    bool            bTrap, bEat;
-    
     trap            myTrap;
+    E_OPTION        touchOption;
+
+    vector <Ball>   myBalls;
+    
+    ofImage         image[3];
+    
+    bool            bTrap, bEat;
+    float           friction,bounce,radiusMax,radiusMin,massMax;
+    
 };
 

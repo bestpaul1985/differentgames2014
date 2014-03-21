@@ -2,12 +2,7 @@
 
 matter::matter(){
     
-    amount = 200;
-    totalAmount = 200;
     color.set(134, 60, 227);
-    
-
-    
 
 }
 

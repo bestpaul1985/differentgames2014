@@ -34,6 +34,14 @@
 		F93C8BDB18D12A42003CED47 /* field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93C8BD918D12A42003CED47 /* field.cpp */; };
 		F9AC5ECE18D1F6900059D934 /* gamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9AC5ECC18D1F6900059D934 /* gamePlay.cpp */; };
 		F9AC5EDB18D211260059D934 /* matter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9AC5ED918D211260059D934 /* matter.cpp */; };
+		F9C7AAAE18DA746E0053C6A9 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AA9D18DA746E0053C6A9 /* ofxBaseGui.cpp */; };
+		F9C7AAAF18DA746E0053C6A9 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AA9F18DA746E0053C6A9 /* ofxButton.cpp */; };
+		F9C7AAB018DA746E0053C6A9 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAA218DA746E0053C6A9 /* ofxGuiGroup.cpp */; };
+		F9C7AAB118DA746E0053C6A9 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAA418DA746E0053C6A9 /* ofxLabel.cpp */; };
+		F9C7AAB218DA746E0053C6A9 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAA618DA746E0053C6A9 /* ofxPanel.cpp */; };
+		F9C7AAB318DA746E0053C6A9 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAA818DA746E0053C6A9 /* ofxSlider.cpp */; };
+		F9C7AAB418DA746E0053C6A9 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAAA18DA746E0053C6A9 /* ofxSliderGroup.cpp */; };
+		F9C7AAB518DA746E0053C6A9 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAAC18DA746E0053C6A9 /* ofxToggle.cpp */; };
 		F9C8CB3E18D28CED00BA3BDC /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C8CB3C18D28CED00BA3BDC /* menu.cpp */; };
 		F9C8CB4718D28F5F00BA3BDC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C8CB4518D28F5F00BA3BDC /* Button.cpp */; };
 		F9C8CB5518D2B5BF00BA3BDC /* trap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C8CB5318D2B5BF00BA3BDC /* trap.cpp */; };
@@ -93,6 +101,23 @@
 		F9AC5ECD18D1F6900059D934 /* gamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gamePlay.h; sourceTree = "<group>"; };
 		F9AC5ED918D211260059D934 /* matter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matter.cpp; sourceTree = "<group>"; };
 		F9AC5EDA18D211260059D934 /* matter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matter.h; sourceTree = "<group>"; };
+		F9C7AA9D18DA746E0053C6A9 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
+		F9C7AA9E18DA746E0053C6A9 /* ofxBaseGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
+		F9C7AA9F18DA746E0053C6A9 /* ofxButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
+		F9C7AAA018DA746E0053C6A9 /* ofxButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxButton.h; sourceTree = "<group>"; };
+		F9C7AAA118DA746E0053C6A9 /* ofxGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGui.h; sourceTree = "<group>"; };
+		F9C7AAA218DA746E0053C6A9 /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGuiGroup.cpp; sourceTree = "<group>"; };
+		F9C7AAA318DA746E0053C6A9 /* ofxGuiGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxGuiGroup.h; sourceTree = "<group>"; };
+		F9C7AAA418DA746E0053C6A9 /* ofxLabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLabel.cpp; sourceTree = "<group>"; };
+		F9C7AAA518DA746E0053C6A9 /* ofxLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxLabel.h; sourceTree = "<group>"; };
+		F9C7AAA618DA746E0053C6A9 /* ofxPanel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPanel.cpp; sourceTree = "<group>"; };
+		F9C7AAA718DA746E0053C6A9 /* ofxPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
+		F9C7AAA818DA746E0053C6A9 /* ofxSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlider.cpp; sourceTree = "<group>"; };
+		F9C7AAA918DA746E0053C6A9 /* ofxSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSlider.h; sourceTree = "<group>"; };
+		F9C7AAAA18DA746E0053C6A9 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSliderGroup.cpp; sourceTree = "<group>"; };
+		F9C7AAAB18DA746E0053C6A9 /* ofxSliderGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
+		F9C7AAAC18DA746E0053C6A9 /* ofxToggle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
+		F9C7AAAD18DA746E0053C6A9 /* ofxToggle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		F9C8CB3C18D28CED00BA3BDC /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		F9C8CB3D18D28CED00BA3BDC /* menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menu.h; sourceTree = "<group>"; };
 		F9C8CB4518D28F5F00BA3BDC /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
@@ -182,6 +207,7 @@
 		BB16F26B0F2B646B00518274 /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F9C7AA9B18DA746E0053C6A9 /* ofxGui */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -220,11 +246,11 @@
 				E4D8936B11527B74007E1F53 /* main.mm */,
 				E4D8936D11527B74007E1F53 /* testApp.mm */,
 				E4D8936C11527B74007E1F53 /* testApp.h */,
-				F9C8CB3C18D28CED00BA3BDC /* menu.cpp */,
-				F9C8CB3D18D28CED00BA3BDC /* menu.h */,
-				F9AC5ECA18D1F5CA0059D934 /* baseScene.h */,
 				F9AC5ECC18D1F6900059D934 /* gamePlay.cpp */,
 				F9AC5ECD18D1F6900059D934 /* gamePlay.h */,
+				F9AC5ECA18D1F5CA0059D934 /* baseScene.h */,
+				F9C8CB3C18D28CED00BA3BDC /* menu.cpp */,
+				F9C8CB3D18D28CED00BA3BDC /* menu.h */,
 				F9AC5ED918D211260059D934 /* matter.cpp */,
 				F9AC5EDA18D211260059D934 /* matter.h */,
 				F93C8BD218D0D9C2003CED47 /* ball.cpp */,
@@ -238,6 +264,39 @@
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
+		};
+		F9C7AA9B18DA746E0053C6A9 /* ofxGui */ = {
+			isa = PBXGroup;
+			children = (
+				F9C7AA9C18DA746E0053C6A9 /* src */,
+			);
+			name = ofxGui;
+			sourceTree = "<group>";
+		};
+		F9C7AA9C18DA746E0053C6A9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F9C7AA9D18DA746E0053C6A9 /* ofxBaseGui.cpp */,
+				F9C7AA9E18DA746E0053C6A9 /* ofxBaseGui.h */,
+				F9C7AA9F18DA746E0053C6A9 /* ofxButton.cpp */,
+				F9C7AAA018DA746E0053C6A9 /* ofxButton.h */,
+				F9C7AAA118DA746E0053C6A9 /* ofxGui.h */,
+				F9C7AAA218DA746E0053C6A9 /* ofxGuiGroup.cpp */,
+				F9C7AAA318DA746E0053C6A9 /* ofxGuiGroup.h */,
+				F9C7AAA418DA746E0053C6A9 /* ofxLabel.cpp */,
+				F9C7AAA518DA746E0053C6A9 /* ofxLabel.h */,
+				F9C7AAA618DA746E0053C6A9 /* ofxPanel.cpp */,
+				F9C7AAA718DA746E0053C6A9 /* ofxPanel.h */,
+				F9C7AAA818DA746E0053C6A9 /* ofxSlider.cpp */,
+				F9C7AAA918DA746E0053C6A9 /* ofxSlider.h */,
+				F9C7AAAA18DA746E0053C6A9 /* ofxSliderGroup.cpp */,
+				F9C7AAAB18DA746E0053C6A9 /* ofxSliderGroup.h */,
+				F9C7AAAC18DA746E0053C6A9 /* ofxToggle.cpp */,
+				F9C7AAAD18DA746E0053C6A9 /* ofxToggle.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxGui/src;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -342,12 +401,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C7AAB418DA746E0053C6A9 /* ofxSliderGroup.cpp in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
+				F9C7AAB118DA746E0053C6A9 /* ofxLabel.cpp in Sources */,
 				F9AC5ECE18D1F6900059D934 /* gamePlay.cpp in Sources */,
+				F9C7AAAF18DA746E0053C6A9 /* ofxButton.cpp in Sources */,
+				F9C7AAB218DA746E0053C6A9 /* ofxPanel.cpp in Sources */,
+				F9C7AAAE18DA746E0053C6A9 /* ofxBaseGui.cpp in Sources */,
 				F9C8CB5518D2B5BF00BA3BDC /* trap.cpp in Sources */,
+				F9C7AAB318DA746E0053C6A9 /* ofxSlider.cpp in Sources */,
 				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
 				F93C8BDB18D12A42003CED47 /* field.cpp in Sources */,
+				F9C7AAB018DA746E0053C6A9 /* ofxGuiGroup.cpp in Sources */,
 				F9AC5EDB18D211260059D934 /* matter.cpp in Sources */,
+				F9C7AAB518DA746E0053C6A9 /* ofxToggle.cpp in Sources */,
 				F9C8CB3E18D28CED00BA3BDC /* menu.cpp in Sources */,
 				F93C8BD418D0D9C2003CED47 /* ball.cpp in Sources */,
 				F9C8CB4718D28F5F00BA3BDC /* Button.cpp in Sources */,

@@ -2,22 +2,19 @@
 #include "ball.h"
 
 Ball::Ball() {
-	mass = ofRandom(3.0) + 1.0;
-	bounce = 0.8;
-	location.x = ofRandom(ofGetWidth());
-	location.y = 0;
-    radius = 20;
-    touchID = -1;
-    damping = 0.015f;
+	
     bFinalized = false;
     bFolloer = true;
     bJoint = true;
     bFixed = false;
     alpha = 50;
+    mass = 0;
 }
 //--------------------------------------------------------------
 void Ball::update() {
 	
+    mass = ofMap(radius, 0, radiusMax, 0, massMax);
+    //    cout<<mass<<" radius"<<radius<<" radiusMax"<<radiusMax<<" massMax"<<massMax<<endl;
     velocity += acceleration;
     location += velocity;
     acceleration.set(0.0f,0.0f,0.0f);
@@ -124,6 +121,7 @@ void Ball::follow(){
         ofPoint steer;
         steer = desired - velocity;
         addForce(steer);
+        cout<<"ok4"<<endl;
     }
    
 }
@@ -152,6 +150,7 @@ void Ball::addDampingForce(){
 
     acceleration.x = acceleration.x - velocity.x * damping;
     acceleration.y = acceleration.y - velocity.y * damping;
+    
 }
 
 //--------------------------------------------------------------
