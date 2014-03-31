@@ -100,7 +100,6 @@ void Ball::addForce( ofVec2f force ) {
 	acceleration += force; // the acceleration is affected by the force
 }
 
-
 //--------------------------------------------------------------
 void Ball::follow(){
 
@@ -121,27 +120,22 @@ void Ball::follow(){
         ofPoint steer;
         steer = desired - velocity;
         addForce(steer);
-        cout<<"ok4"<<endl;
     }
    
 }
-
 //--------------------------------------------------------------
 void Ball::joint(){
     
     if (bJoint) {
         float distance = 0.0;
         float springiness = 0.01f;
-    
         ofVec2f pta = location;
         ofVec2f ptb = anchor;
-	
         float theirDistance = (pta - ptb).length();
         float diff = distance - theirDistance;
         float newDiff = MIN(diff,20);
         float springForce = (springiness * newDiff);
         ofVec2f frcToAdd = (pta-ptb).normalized() * springForce;
-        
         addForce(frcToAdd);
     }
 }

@@ -56,8 +56,6 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
     touchOption = NO_INITI;
     int num;
     float dis;
-
-    
     
     if(myField.midRect.inside(touchPos)){
         
@@ -114,10 +112,6 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
         }
     }
     
-    
-    
-
-    
     switch (touchOption) {
             
         case INITI_TOP_BALL:{
@@ -160,34 +154,6 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
         }
             break;
             
-//        case DRAG_TOP_BALL:{
-//            
-//            if (myBalls[num].ballID==ID_TOP_BALL) {
-//                myBalls[num].bFolloer = true;
-//                myBalls[num].followPos.set(touchPos);
-//                myBalls[num].touchID = touch.id;
-//            }
-//            
-//            
-//        }
-//            break;
-//        case DRAG_BOT_BALL:{
-//            if (myBalls[num].ballID==ID_BOT_BALL) {
-//                myBalls[num].bFolloer = true;
-//                myBalls[num].followPos.set(touchPos);
-//                myBalls[num].touchID = touch.id;
-//
-//            }
-//        }
-//            break;
-//            
-//        case DRAG_MID_BALL:{
-//                myBalls[num].bFolloer = true;
-//                myBalls[num].followPos.set(touchPos);
-//                myBalls[num].touchID = touch.id;
-//        }
-//            break;
-//            
         case DRAG_BALL:{
             myBalls[num].bFolloer = true;
             myBalls[num].followPos.set(touchPos);
@@ -229,12 +195,12 @@ void gameplay::touchUp(ofTouchEventArgs & touch){
 //--------------------------------------------------------------
 void gameplay::checkCollision(){
     
-    
     for(int i=0; i<myBalls.size(); i++) {
         bool bCollied = false;
         for(int j=i+1; j<myBalls.size(); j++) {
             if(ofDist(myBalls[i].location.x, myBalls[i].location.y, myBalls[j].location.x, myBalls[j].location.y) <= myBalls[i].radius+myBalls[j].radius) {
 				myBalls[i].collision( myBalls[j] );
+                addShrink(myBalls[i],myBalls[j]);
                 addEat(myBalls[i],myBalls[j], i, j);
                 bCollied = true;
             }
@@ -245,11 +211,7 @@ void gameplay::checkCollision(){
         }else{
             myBalls[i].bCollided = false;
         }
-        
-        
     }
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -295,6 +257,7 @@ void gameplay::checkBallRadius(){
     }
     
 }
+
 //--------------------------------------------------------------
 void gameplay::imageLoader(){
 
@@ -362,13 +325,21 @@ void gameplay::addEat(Ball A,Ball B, int a, int b){
                 }
                 
             }
-            
+        
             myBalls.erase(myBalls.begin()+a);
-            
         }
     }
-    
+}
+//--------------------------------------------------------------
+void gameplay::addShrink(Ball &A, Ball &B){
 
+    if (A.ballID != B.ballID && bShrink) {
+        A.radius*=0.9;
+        B.radius*=0.9;
+    
+        if (A.radius < radiusMin) A.radius = radiusMin;
+        if (B.radius < radiusMin) B.radius = radiusMin;
+    }
 }
 
 //--------------------------------------------------------------
@@ -378,6 +349,10 @@ void gameplay::setTrap(bool trap){
 //--------------------------------------------------------------
 void gameplay::setEat(bool eat){
     bEat = eat;
+}
+//--------------------------------------------------------------
+void gameplay::setShrink(bool shrink){
+    bShrink = shrink;
 }
 //--------------------------------------------------------------
 void gameplay::setFriction(float Friction){

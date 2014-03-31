@@ -20,19 +20,19 @@ class Ball{
         void addDampingForce();
         void checkFinalized();
     
-        ofVec3f location;
-        ofVec3f velocity;
-        ofVec3f acceleration;
-        float           maximum_velocity;
+        ofVec3f         location;
+        ofVec3f         velocity;
+        ofVec3f         acceleration;
+        ofColor         color;
         // How bouncy are we? 1 means we don't lose any speed in bouncing,
         // higher means we gain speed, lower means we lose it
         float           mass,massMax; // how heavy are we?
         float           bounce;
+        float           maximum_velocity;
         float           radius,radiusMax;
         float           damping;
         float           alpha;
         int             touchID;
-        ofColor         color;
         bool            bFinalized;
         bool            bFolloer;
         bool            bJoint;

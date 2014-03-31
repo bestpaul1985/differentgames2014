@@ -17,19 +17,18 @@ void testApp::setup(){
 	ofxGuiSetDefaultWidth(400);
 	ofxGuiSetDefaultHeight(38);
     
+    BallSetting.setup("Ball Setting");
+    FieldSetting.setup("Field Setting");
+    
     gui.setup("What is in your mind ?");
-    gui.add(trap.set("trap", false));
-    gui.add(eat.set("eat", false));
-    gui.add(radiusMax.set( "Radius", 1, 1, 4));
-    gui.add(bounce.set( "Bounce", 1, 1, 4));
-    gui.add(friction.set( "Friction", 1, 1, 4));
-    gui.add(matter.set( "Matter", 3, 1, 4));
+    gui.add(BallSetting.parameters);
+    gui.add(FieldSetting.parameters);
     gui.add(done.setup("done"));
     
     // we set scenes here
     currentScene = 0;
     
-    scenes[0] = new menu();
+    scenes[0] = new baseScene();
     scenes[1] = new gameplay();
     
     scenes[0]->setup();
@@ -128,22 +127,20 @@ void testApp::imageLoader(){
 //--------------------------------------------------------------
 void testApp::menu_done(){
     
-    float myBounce = ofMap(bounce, 1, 4, 0.2f, 1.0f);
-    float myFriction = ofMap(friction, 1, 4, 0.015f, 0.09f);
-    int myRadiusMax = ofMap(radiusMax, 1, 4, 40, 120);
-    int matterAmount= ofMap(radiusMax, 1, 4, 100, 400);
+    float myBounce = ofMap(BallSetting.bounce, 1, 4, 0.2f, 1.0f);
+    float myFriction = ofMap(BallSetting.friction, 1, 4, 0.015f, 0.09f);
+    int myRadiusMax = ofMap(BallSetting.radiusMax, 1, 4, 40, 120);
+    int matterAmount= ofMap(FieldSetting.matter, 1, 4, 100, 400);
 
     ((gameplay*)scenes[1])->setBounce(myBounce);
     ((gameplay*)scenes[1])->setFriction(myFriction);
     ((gameplay*)scenes[1])->setRadiusMax(myRadiusMax);
     ((gameplay*)scenes[1])->setMatter(matterAmount);
-    ((gameplay*)scenes[1])->setEat(eat);
-    ((gameplay*)scenes[1])->setTrap(trap);
-
+    ((gameplay*)scenes[1])->setEat(BallSetting.eat);
+    ((gameplay*)scenes[1])->setTrap(FieldSetting.trap);
+    ((gameplay*)scenes[1])->setShrink(BallSetting.shrink);
     currentScene = 1;
     
-
-        
 }
 
 

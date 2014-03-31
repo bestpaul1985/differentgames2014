@@ -15,13 +15,9 @@ class gameplay :public baseScene{
     void draw();
     void exit();
     void checkBallRadius();
-    
-    
     void touchDown(ofTouchEventArgs & touch);
     void touchMoved(ofTouchEventArgs & touch);
     void touchUp(ofTouchEventArgs & touch);
-    
-   
     void checkCollision();
     void imageLoader();
     
@@ -29,17 +25,17 @@ class gameplay :public baseScene{
 public:
     void addTrap();
     void addEat(Ball A,Ball B, int a, int b);
-
+    void addShrink(Ball &A,Ball &B);
     //setup ball paramater
     void setTrap(bool trap);
     void setEat(bool eat);
+    void setShrink(bool shink);
     void setFriction(float Friction);
     void setBounce(float Bounce);
     void setRadiusMax(float RadiusMax);
     void setRadiusMin(float RadiusMin);
     void setMatter(int Matter);
     void setMassMax(int MassMax);
- 
     
 
 
@@ -55,7 +51,7 @@ public:
     
     ofImage         image[3];
     
-    bool            bTrap, bEat;
+    bool            bTrap, bEat, bShrink;
     float           friction,bounce,radiusMax,radiusMin,massMax;
     
 };

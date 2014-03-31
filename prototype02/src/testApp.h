@@ -5,7 +5,7 @@
 #include "ofxiOSExtras.h"
 #include "baseScene.h"
 #include "gamePlay.h"
-#include "menu.h"
+#include "menuRenderer.h"
 #include "ofxGui.h"
 
 class testApp : public ofxiOSApp{
@@ -36,18 +36,14 @@ class testApp : public ofxiOSApp{
     
         int currentScene;
     
-        menu myMenu;
     
         //----let's create a gui-----
         ofxPanel gui;
         ofxButton done;
     
-        ofParameter<int> radiusMax;
-        ofParameter<int> friction;
-        ofParameter<int> bounce;
-        ofParameter<int> matter;
-        ofParameter<bool> trap;
-        ofParameter<bool> eat;
+        ballSetting     BallSetting;
+        fieldSetting    FieldSetting;
+
 
 };
 

@@ -7,15 +7,14 @@ trap::trap(){
     bOpen = false;
     bKill = true;
 }
-
+//-----------------------------------------------------------------------
 void trap::setup(){
 
     timer = ofGetElapsedTimeMillis();
 
 }
 
-
-
+//-----------------------------------------------------------------------
 void trap::update(){
     
     if (ofGetElapsedTimeMillis()-timer>3000) {
@@ -34,11 +33,9 @@ void trap::update(){
             pos.set(ofGetWidth()/2,ofGetHeight()/2);
         }
     }
-
-    
 }
 
-
+//-----------------------------------------------------------------------
 void trap::draw(){
     
     if (bOpen) {

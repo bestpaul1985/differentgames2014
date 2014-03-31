@@ -8,13 +8,11 @@
 class baseScene {
 	
 
-	public: 
+public: 
 	
 	virtual void setup(){};
 	virtual void update(){};
 	virtual void draw(){};
-
-
     
     virtual void touchDown(ofTouchEventArgs & touch){};
     virtual void touchMoved(ofTouchEventArgs & touch){};
