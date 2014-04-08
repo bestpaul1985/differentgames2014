@@ -5,6 +5,7 @@
 #include "field.h"
 #include "matter.h"
 #include "trap.h"
+#include "gola.h"
 
 enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL, DRAG_MID_BALL, DRAG_BALL};
 
@@ -38,10 +39,6 @@ public:
     void setMassMax(int MassMax);
     
 
-
-
-
-
     field           myField;
     matter          myMatter[2];
     trap            myTrap;
@@ -53,6 +50,8 @@ public:
     
     bool            bTrap, bEat, bShrink;
     float           friction,bounce,radiusMax,radiusMin,massMax;
+    gola            golaTop, golaBot;
+    
     
 };
 

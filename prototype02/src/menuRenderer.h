@@ -14,9 +14,9 @@ class ballSetting{
 public:
     void setup(string name){
         parameters.setName(name);
-        parameters.add(radiusMax.set( "Radius", 1, 1, 4));
-        parameters.add(bounce.set( "Bounce", 1, 1, 4));
-        parameters.add(friction.set( "Friction", 1, 1, 4));
+        parameters.add(radiusMax.set( "Radius", 2, 1, 4));
+        parameters.add(bounce.set( "Bounce", 2, 1, 4));
+        parameters.add(friction.set( "Friction", 2, 1, 4));
         parameters.add(eat.set("eat", false));
         parameters.add(shrink.set("Shrink", false));
 
@@ -36,7 +36,7 @@ public:
     void setup(string name){
     
         parameters.setName(name);
-        parameters.add(matter.set("Matter",1,1,4));
+        parameters.add(matter.set("Matter",4,1,4));
         parameters.add(trap.set("trap",false));
 
     };

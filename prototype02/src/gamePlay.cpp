@@ -13,6 +13,8 @@ void gameplay::setup(){
     bEat = false;
     massMax = 5;
     radiusMin = 20;
+    golaTop.setup(0);
+    golaBot.setup(1);
 }
 
 //--------------------------------------------------------------
@@ -22,7 +24,6 @@ void gameplay::update(){
     checkBallRadius();
     
 	for(int i=0; i<myBalls.size(); i++) {
-//      myBalls[i].chcekFollower(myField.midRect);
         myBalls[i].follow();
         myBalls[i].addDampingForce();
 		myBalls[i].update();
@@ -30,12 +31,15 @@ void gameplay::update(){
     
 	checkCollision();
     addTrap();
+    
 }
 
 //--------------------------------------------------------------
 void gameplay::draw(){
     
     myField.draw();
+    golaTop.draw();
+    golaBot.draw();
     myMatter[0].draw();
     myMatter[1].draw();
     myTrap.draw();
@@ -212,6 +216,17 @@ void gameplay::checkCollision(){
             myBalls[i].bCollided = false;
         }
     }
+    
+    //balls and golas collision
+    for(int i=0; i<myBalls.size(); i++) {
+        
+        if (golaTop.conllision(myBalls[i].location, myBalls[i].radius)) {
+            cout<<"1"<<endl;
+        }else if(golaBot.conllision(myBalls[i].location, myBalls[i].radius)){
+            cout<<"2"<<endl;
+        }
+    }
+   
 }
 
 //--------------------------------------------------------------

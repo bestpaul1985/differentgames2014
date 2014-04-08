@@ -30,6 +30,7 @@
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
 		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
+		F90827EF18F4459C00D097B0 /* gola.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F90827ED18F4459C00D097B0 /* gola.cpp */; };
 		F93C8BD418D0D9C2003CED47 /* ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93C8BD218D0D9C2003CED47 /* ball.cpp */; };
 		F93C8BDB18D12A42003CED47 /* field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93C8BD918D12A42003CED47 /* field.cpp */; };
 		F9408DEF18E9BCA700E51354 /* menuRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9408DEE18E9BCA700E51354 /* menuRenderer.cpp */; };
@@ -92,6 +93,8 @@
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
 		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
 		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
+		F90827ED18F4459C00D097B0 /* gola.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gola.cpp; sourceTree = "<group>"; };
+		F90827EE18F4459C00D097B0 /* gola.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gola.h; sourceTree = "<group>"; };
 		F93C8BD218D0D9C2003CED47 /* ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ball.cpp; sourceTree = "<group>"; };
 		F93C8BD318D0D9C2003CED47 /* ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ball.h; sourceTree = "<group>"; };
 		F93C8BD918D12A42003CED47 /* field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = field.cpp; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				F9408DEC18E9BA8D00E51354 /* menuRenderer.h */,
 				F9AC5ECC18D1F6900059D934 /* gamePlay.cpp */,
 				F9AC5ECD18D1F6900059D934 /* gamePlay.h */,
+				F90827ED18F4459C00D097B0 /* gola.cpp */,
+				F90827EE18F4459C00D097B0 /* gola.h */,
 				F9AC5ECA18D1F5CA0059D934 /* baseScene.h */,
 				F9AC5ED918D211260059D934 /* matter.cpp */,
 				F9AC5EDA18D211260059D934 /* matter.h */,
@@ -403,6 +408,7 @@
 			files = (
 				F9C7AAB418DA746E0053C6A9 /* ofxSliderGroup.cpp in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
+				F90827EF18F4459C00D097B0 /* gola.cpp in Sources */,
 				F9408DEF18E9BCA700E51354 /* menuRenderer.cpp in Sources */,
 				F9C7AAB118DA746E0053C6A9 /* ofxLabel.cpp in Sources */,
 				F9AC5ECE18D1F6900059D934 /* gamePlay.cpp in Sources */,
