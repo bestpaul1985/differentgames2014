@@ -17,18 +17,13 @@ public:
         parameters.add(radiusMax.set( "Radius", 2, 1, 4));
         parameters.add(bounce.set( "Bounce", 2, 1, 4));
         parameters.add(friction.set( "Friction", 2, 1, 4));
-        parameters.add(eat.set("eat", false));
-        parameters.add(shrink.set("Shrink", false));
-
-
-    };
+    }
    
     ofParameterGroup parameters;
-    ofParameter<int> radiusMax;
-	ofParameter<int> bounce;
-    ofParameter<int> friction;
-    ofParameter<bool> eat;
-    ofParameter<bool> shrink;
+    ofParameter<float> radiusMax;
+	ofParameter<float> bounce;
+    ofParameter<float> friction;
+   
 };
 
 class fieldSetting{
@@ -38,12 +33,30 @@ public:
         parameters.setName(name);
         parameters.add(matter.set("Matter",4,1,4));
         parameters.add(trap.set("trap",false));
+        parameters.add(eat.set("eat", false));
+        parameters.add(shrink.set("Shrink", false));
 
+    }
+    
+    ofParameterGroup parameters;
+    ofParameter<float> matter;
+    ofParameter<bool> trap;
+    ofParameter<bool> eat;
+    ofParameter<bool> shrink;
+
+};
+
+class winningSituation{
+public:
+    void setup(string name){
+
+        parameters.setName(name);
+        parameters.add(score.set("Score",10,1,20));
+        
     };
     
     ofParameterGroup parameters;
-    ofParameter<int> matter;
-    ofParameter<bool> trap;
-
+    ofParameter<int> score;
+    
 };
 #endif /* defined(__prototype02__menuRenderer__) */

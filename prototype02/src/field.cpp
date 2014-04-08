@@ -29,4 +29,6 @@ void field::draw(){
     ofRect(botRect);
     ofSetColor(230,255);
     ofRect(midRect);
+    ofSetColor(180,255);
+    ofLine(0, ofGetHeight()/2, ofGetWidth(), ofGetHeight()/2);
 }

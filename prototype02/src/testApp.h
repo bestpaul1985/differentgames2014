@@ -41,9 +41,9 @@ class testApp : public ofxiOSApp{
         ofxPanel gui;
         ofxButton done;
     
-        ballSetting     BallSetting;
-        fieldSetting    FieldSetting;
-
+        ballSetting         BallSetting;
+        fieldSetting        FieldSetting;
+        winningSituation    WinningSetting;
 
 };
 

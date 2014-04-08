@@ -15,6 +15,7 @@ void gameplay::setup(){
     radiusMin = 20;
     golaTop.setup(0);
     golaBot.setup(1);
+    Score.setup();
 }
 
 //--------------------------------------------------------------
@@ -22,6 +23,7 @@ void gameplay::update(){
     myMatter[0].update();
     myMatter[1].update();
     checkBallRadius();
+    checkScole();
     
 	for(int i=0; i<myBalls.size(); i++) {
         myBalls[i].follow();
@@ -38,6 +40,7 @@ void gameplay::update(){
 void gameplay::draw(){
     
     myField.draw();
+    Score.draw();
     golaTop.draw();
     golaBot.draw();
     myMatter[0].draw();
@@ -217,15 +220,7 @@ void gameplay::checkCollision(){
         }
     }
     
-    //balls and golas collision
-    for(int i=0; i<myBalls.size(); i++) {
-        
-        if (golaTop.conllision(myBalls[i].location, myBalls[i].radius)) {
-            cout<<"1"<<endl;
-        }else if(golaBot.conllision(myBalls[i].location, myBalls[i].radius)){
-            cout<<"2"<<endl;
-        }
-    }
+    
    
 }
 
@@ -267,6 +262,29 @@ void gameplay::checkBallRadius(){
                     myBalls[i].radius = radiusMax;
                     myBalls[i].bFinalized = true;
                 }
+            }
+        }
+    }
+    
+}
+
+//--------------------------------------------------------------
+void gameplay::checkScole(){
+    
+    //balls and golas collision
+    for(int i=0; i<myBalls.size(); i++) {
+        
+        if (golaTop.conllision(myBalls[i].location, myBalls[i].radius) ) {
+            if (myBalls[i].ballID == ID_BOT_BALL) {
+                myBalls.erase(myBalls.begin()+i);
+                Score.scoreBot ++;
+            }
+           
+        }
+        else if(golaBot.conllision(myBalls[i].location, myBalls[i].radius)){
+            if (myBalls[i].ballID == ID_TOP_BALL) {
+                myBalls.erase(myBalls.begin()+i);
+                Score.scoreTop ++;
             }
         }
     }

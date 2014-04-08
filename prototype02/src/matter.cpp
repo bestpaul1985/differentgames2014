@@ -9,10 +9,10 @@ matter::matter(){
 void matter::initial(int Num){
 
     num = Num;
-    image[0].loadImage("image/1.png");
+    image[0].loadImage("image/front.png");
     pos.set(0,0);
     if (num == 1) {
-        pos.set(ofGetWidth()-180,ofGetHeight()-200);
+        pos.set(ofGetWidth()-image[0].getWidth(),ofGetHeight()-image[0].getHeight());
     }
 }
 
@@ -32,12 +32,12 @@ void matter::draw(){
     ofSetColor(255);
     ofRect(pos.x+image[0].getWidth()/2, pos.y+image[0].getHeight()/2, 120,120);
     
-    ofSetColor(255,0,0);
+    ofSetColor(255,220,0);
     ofRect(pos.x+image[0].getWidth()/2, pos.y+image[0].getHeight()/2-h, 120, 120);
     ofSetRectMode(OF_RECTMODE_CORNER);
 
     ofSetColor(255);
-    image[0].draw(pos,image[0].getWidth(),image[0].getHeight());
+    image[0].draw(pos, image[0].getWidth(),image[0].getHeight());
     
 }
 

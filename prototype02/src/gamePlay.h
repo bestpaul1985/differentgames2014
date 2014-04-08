@@ -6,6 +6,7 @@
 #include "matter.h"
 #include "trap.h"
 #include "gola.h"
+#include "score.h"
 
 enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL, DRAG_MID_BALL, DRAG_BALL};
 
@@ -20,6 +21,8 @@ class gameplay :public baseScene{
     void touchMoved(ofTouchEventArgs & touch);
     void touchUp(ofTouchEventArgs & touch);
     void checkCollision();
+    void checkScole();
+
     void imageLoader();
     
     
@@ -51,7 +54,7 @@ public:
     bool            bTrap, bEat, bShrink;
     float           friction,bounce,radiusMax,radiusMin,massMax;
     gola            golaTop, golaBot;
-    
+    score           Score;
     
 };
 

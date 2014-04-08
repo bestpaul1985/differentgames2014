@@ -12,18 +12,20 @@ void testApp::setup(){
     //let's setup gui
     done.addListener(this,&testApp::menu_done);
 
-    ofxGuiSetFont("font/Questrial-Regular.ttf",18,true,true);
-	ofxGuiSetTextPadding(4);
-	ofxGuiSetDefaultWidth(400);
-	ofxGuiSetDefaultHeight(38);
+    ofxGuiSetFont("font/Questrial-Regular.ttf",16,true,true);
+	ofxGuiSetTextPadding(8);
+	ofxGuiSetDefaultWidth(300);
+	ofxGuiSetDefaultHeight(42);
     
-    BallSetting.setup("Ball Setting");
-    FieldSetting.setup("Field Setting");
+    BallSetting.setup("Ball");
+    FieldSetting.setup("Field");
+    WinningSetting.setup("Win");
     
     gui.setup("What is in your mind ?");
     gui.add(BallSetting.parameters);
     gui.add(FieldSetting.parameters);
-    gui.add(done.setup("done"));
+    gui.add(WinningSetting.parameters);
+    gui.add(done.setup  ("done"));
     
     // we set scenes here
     currentScene = 0;
@@ -127,8 +129,8 @@ void testApp::imageLoader(){
 //--------------------------------------------------------------
 void testApp::menu_done(){
     
-    float myBounce = ofMap(BallSetting.bounce, 1, 4, 0.2f, 1.0f);
-    float myFriction = ofMap(BallSetting.friction, 1, 4, 0.015f, 0.09f);
+    float myBounce = ofMap(BallSetting.bounce, 1, 4, 0.4f, 1.0f);
+    float myFriction = ofMap(BallSetting.friction, 1, 4, 0.005f, 0.02f);
     int myRadiusMax = ofMap(BallSetting.radiusMax, 1, 4, 40, 120);
     int matterAmount= ofMap(FieldSetting.matter, 1, 4, 100, 400);
 
@@ -136,9 +138,9 @@ void testApp::menu_done(){
     ((gameplay*)scenes[1])->setFriction(myFriction);
     ((gameplay*)scenes[1])->setRadiusMax(myRadiusMax);
     ((gameplay*)scenes[1])->setMatter(matterAmount);
-    ((gameplay*)scenes[1])->setEat(BallSetting.eat);
+    ((gameplay*)scenes[1])->setEat(FieldSetting.eat);
     ((gameplay*)scenes[1])->setTrap(FieldSetting.trap);
-    ((gameplay*)scenes[1])->setShrink(BallSetting.shrink);
+    ((gameplay*)scenes[1])->setShrink(FieldSetting.shrink);
     currentScene = 1;
     
 }

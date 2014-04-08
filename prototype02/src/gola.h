@@ -18,6 +18,7 @@ public:
     void draw();
     
     ofRectangle rect;
+    int num;
 };
 
 #endif /* defined(__prototype02__gola__) */

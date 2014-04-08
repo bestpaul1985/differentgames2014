@@ -10,8 +10,9 @@
 //-------------------------------------------------------------
 void gola::setup(int where){
 
-    int w = 150;
-    int h = 16;
+    int w = 170;
+    int h = 32;
+    num = where;
     if (where == 0) {
         rect.setFromCenter(ofGetWidth()/2, h/2, w, h);
 
