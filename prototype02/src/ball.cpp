@@ -7,19 +7,26 @@ Ball::Ball() {
     bFolloer = true;
     bJoint = true;
     bFixed = false;
+    bObstacle = false;
     alpha = 50;
     mass = 0;
 }
 //--------------------------------------------------------------
 void Ball::update() {
 	
-    mass = ofMap(radius, 0, radiusMax, 0, massMax);
-    //    cout<<mass<<" radius"<<radius<<" radiusMax"<<radiusMax<<" massMax"<<massMax<<endl;
+    
+    if (bObstacle) {
+        mass = 999999;
+    }else{
+        mass = ofMap(radius, 0, radiusMax, 0, massMax);
+    }
     velocity += acceleration;
+    
     location += velocity;
+    
+    
     acceleration.set(0.0f,0.0f,0.0f);
-    // this assumes that the height of the window is 800px and the width is 1000
-    // you can also use the getWindowSize() method to determine how large the window is
+   
     if (location.y > ofGetHeight()-radius) {
         velocity.y *= -bounce;
         location.y = ofGetHeight()-radius;
@@ -36,6 +43,7 @@ void Ball::update() {
         velocity.x *= -bounce;
         location.x = radius;
     }
+    
 	
 }
 //--------------------------------------------------------------
@@ -56,40 +64,45 @@ void Ball::draw() {
 }
 
 //--------------------------------------------------------------
-void Ball::collision(Ball& b1)
-{	
-//	cout << b1.mass << " " << b1.location.x << " " << b1.location.y << endl;
-    // we'll just declare all these things we'll need at once
-    float newMass, diff, angle, newX, newY, newVelocityX, newVelocityY, fy21, sign;
-	
-    newMass = b1.mass/mass;
-    newX = b1.location.x - location.x;
-    newY = b1.location.y - location.y;
-    newVelocityX = b1.velocity.x - velocity.x;
-    newVelocityY = b1.velocity.y - velocity.y;
-	
-    //  If the balls aren't heading at one another, we don't want to alter them 
-    //  because they could be heading away from each other.
-    if ( (newVelocityX*newX + newVelocityY*newY) >= 0) return;
-	
-    fy21=fabs(newY);
+void Ball::collision(Ball& b1){
     
-    fy21=1.0E-12*fabs(b1.location.y);
     
-    if ( fabs(newX)<fy21 ) {
-        if (newX<0) { sign=-1; } else { sign=1;}
-        newX=fy21*sign;
-    }
-	
-    // Now that we've figured out which direction things are heading,
-    // set their velocities.
-    angle=newY/newX;
-    diff = -2 * (newVelocityX + angle * newVelocityY)/((1 + angle * angle) * (1 + newMass));
-    b1.velocity.x = b1.velocity.x + diff;
-    b1.velocity.y = b1.velocity.y + angle * diff;
-	velocity.x = velocity.x - newMass * diff;
-    velocity.y = velocity.y - angle * newMass * diff;
-    velocity *= bounce;
+        
+        // cout << b1.mass << " " << b1.location.x << " " << b1.location.y << endl;
+        // we'll just declare all these things we'll need at once
+        float newMass, diff, angle, newX, newY, newVelocityX, newVelocityY, fy21, sign;
+        
+        newMass = b1.mass/mass;
+        newX = b1.location.x - location.x;
+        newY = b1.location.y - location.y;
+        newVelocityX = b1.velocity.x - velocity.x;
+        newVelocityY = b1.velocity.y - velocity.y;
+        
+        //  If the balls aren't heading at one another, we don't want to alter them 
+        //  because they could be heading away from each other.
+        if ( (newVelocityX*newX + newVelocityY*newY) >= 0) return;
+        
+        fy21=fabs(newY);
+        
+        fy21=1.0E-12*fabs(b1.location.y);
+        
+        if ( fabs(newX)<fy21 ) {
+            if (newX<0) { sign=-1; } else { sign=1;}
+            newX=fy21*sign;
+        }
+        
+        // Now that we've figured out which direction things are heading,
+        // set their velocities.
+        angle=newY/newX;
+        diff = -2 * (newVelocityX + angle * newVelocityY)/((1 + angle * angle) * (1 + newMass));
+        b1.velocity.x = b1.velocity.x + diff;
+        b1.velocity.y = b1.velocity.y + angle * diff;
+    
+        velocity.x = velocity.x - newMass * diff;
+        velocity.y = velocity.y - angle * newMass * diff;
+        velocity *= bounce;
+    
+    
 	
 }
 
@@ -103,7 +116,7 @@ void Ball::addForce( ofVec2f force ) {
 //--------------------------------------------------------------
 void Ball::follow(){
 
-    if (bFolloer && !bCollided) {
+    if (bFolloer && !bCollided && !bObstacle) {
        
         float maxSpeed = 25;
         ofPoint desired = followPos - location;
@@ -123,22 +136,22 @@ void Ball::follow(){
     }
    
 }
-//--------------------------------------------------------------
-void Ball::joint(){
-    
-    if (bJoint) {
-        float distance = 0.0;
-        float springiness = 0.01f;
-        ofVec2f pta = location;
-        ofVec2f ptb = anchor;
-        float theirDistance = (pta - ptb).length();
-        float diff = distance - theirDistance;
-        float newDiff = MIN(diff,20);
-        float springForce = (springiness * newDiff);
-        ofVec2f frcToAdd = (pta-ptb).normalized() * springForce;
-        addForce(frcToAdd);
-    }
-}
+////---------not useful for this app but might good for other apps-----------------------------------------------------
+//void Ball::joint(){
+//    
+//    if (bJoint) {
+//        float distance = 0.0;
+//        float springiness = 0.01f;
+//        ofVec2f pta = location;
+//        ofVec2f ptb = anchor;
+//        float theirDistance = (pta - ptb).length();
+//        float diff = distance - theirDistance;
+//        float newDiff = MIN(diff,20);
+//        float springForce = (springiness * newDiff);
+//        ofVec2f frcToAdd = (pta-ptb).normalized() * springForce;
+//        addForce(frcToAdd);
+//    }
+//}
 //--------------------------------------------------------------
 void Ball::addDampingForce(){
 

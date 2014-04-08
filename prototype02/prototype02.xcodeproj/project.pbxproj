@@ -47,6 +47,7 @@
 		F9C7AAB518DA746E0053C6A9 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C7AAAC18DA746E0053C6A9 /* ofxToggle.cpp */; };
 		F9C8CB4718D28F5F00BA3BDC /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C8CB4518D28F5F00BA3BDC /* Button.cpp */; };
 		F9C8CB5518D2B5BF00BA3BDC /* trap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9C8CB5318D2B5BF00BA3BDC /* trap.cpp */; };
+		F9EE2F9918F48DA0006011C1 /* obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9EE2F9718F48DA0006011C1 /* obstacle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		F9C8CB4618D28F5F00BA3BDC /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		F9C8CB5318D2B5BF00BA3BDC /* trap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trap.cpp; sourceTree = "<group>"; };
 		F9C8CB5418D2B5BF00BA3BDC /* trap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trap.h; sourceTree = "<group>"; };
+		F9EE2F9718F48DA0006011C1 /* obstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = obstacle.cpp; sourceTree = "<group>"; };
+		F9EE2F9818F48DA0006011C1 /* obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obstacle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +274,8 @@
 				F9C8CB5418D2B5BF00BA3BDC /* trap.h */,
 				F90827F918F471CD00D097B0 /* score.cpp */,
 				F90827FA18F471CD00D097B0 /* score.h */,
+				F9EE2F9718F48DA0006011C1 /* obstacle.cpp */,
+				F9EE2F9818F48DA0006011C1 /* obstacle.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -413,6 +418,7 @@
 			files = (
 				F9C7AAB418DA746E0053C6A9 /* ofxSliderGroup.cpp in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
+				F9EE2F9918F48DA0006011C1 /* obstacle.cpp in Sources */,
 				F90827EF18F4459C00D097B0 /* gola.cpp in Sources */,
 				F9408DEF18E9BCA700E51354 /* menuRenderer.cpp in Sources */,
 				F9C7AAB118DA746E0053C6A9 /* ofxLabel.cpp in Sources */,

@@ -3,7 +3,7 @@
 #include "ofMain.h"
 
 #define otherObjsCount 2
-enum E_ID{ID_TOP_BALL, ID_BOT_BALL};
+enum E_ID{ID_TOP_BALL, ID_BOT_BALL,ID_OBTACLE_TOP,ID_OBTACLE_BOT};
 
 class Ball{
     
@@ -16,7 +16,7 @@ class Ball{
         void collision(Ball& b1);
         void follow();
         void chcekFollower(ofRectangle rect);
-        void joint();
+//        void joint();
         void addDampingForce();
         void checkFinalized();
     
@@ -38,7 +38,7 @@ class Ball{
         bool            bJoint;
         bool            bFixed;
         bool            bCollided;
-    
+        bool            bObstacle;
     
         ofPoint         followPos;
         ofPoint         anchor;

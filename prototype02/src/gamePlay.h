@@ -7,8 +7,15 @@
 #include "trap.h"
 #include "gola.h"
 #include "score.h"
+#include "obstacle.h"
 
-enum E_OPTION{ NO_INITI,INITI_TOP_BALL,INITI_BOT_BALL,DRAG_TOP_BALL,DRAG_BOT_BALL, DRAG_MID_BALL, DRAG_BALL};
+enum E_OPTION{ NO_INITI,
+               INITI_TOP_BALL,
+               INITI_BOT_BALL,
+               DRAG_BALL,
+               INITI_OBSTACLE_TOP,
+               INITI_OBSTACLE_BOT
+};
 
 class gameplay :public baseScene{
     
@@ -55,6 +62,6 @@ public:
     float           friction,bounce,radiusMax,radiusMin,massMax;
     gola            golaTop, golaBot;
     score           Score;
-    
+    obstacle        Obstacle;
 };
 

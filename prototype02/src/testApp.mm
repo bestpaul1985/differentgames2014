@@ -4,7 +4,7 @@
 void testApp::setup(){
 	
     ofSetVerticalSync(true);
-	ofSetCircleResolution(90);
+	ofSetCircleResolution(100);
 	ofEnableSmoothing();
 	ofEnableAlphaBlending();
     ofTrueTypeFont::setGlobalDpi(72);

@@ -16,6 +16,7 @@ void gameplay::setup(){
     golaTop.setup(0);
     golaBot.setup(1);
     Score.setup();
+    Obstacle.setup();
 }
 
 //--------------------------------------------------------------
@@ -40,6 +41,7 @@ void gameplay::update(){
 void gameplay::draw(){
     
     myField.draw();
+    Obstacle.draw();
     Score.draw();
     golaTop.draw();
     golaBot.draw();
@@ -63,6 +65,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
     touchOption = NO_INITI;
     int num;
     float dis;
+    ofPoint obtaclePos;
     
     if(myField.midRect.inside(touchPos)){
         
@@ -70,11 +73,30 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             dis = myBalls[i].location.distance(touchPos);
             if (dis <myBalls[i].radius+radiusMin) {
                 bInitial = false;
-                if (dis<myBalls[i].radius && myBalls[i].bFinalized) {
+                if (dis<myBalls[i].radius && myBalls[i].bFinalized && myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT&& !myBalls[i].bFolloer) {
                     touchOption = DRAG_BALL;
-                    num = i;
                 }
                 break;
+            }
+        }
+        //initial obtacle
+        if (bInitial) {
+            for (int i=0; i<Obstacle.topPos.size(); i++) {
+                dis = Obstacle.topPos[i].distance(touchPos);
+                if (dis<20) {
+                    touchOption = INITI_OBSTACLE_TOP;
+                    obtaclePos = Obstacle.topPos[i];
+                    break;
+                }
+            }
+            
+            for (int i=0; i<Obstacle.botPos.size(); i++) {
+                dis = Obstacle.botPos[i].distance(touchPos);
+                if (dis<20) {
+                    touchOption = INITI_OBSTACLE_BOT;
+                    obtaclePos = Obstacle.botPos[i];
+                    break;
+                }
             }
         }
     }
@@ -85,7 +107,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             dis = myBalls[i].location.distance(touchPos);
             if (dis <myBalls[i].radius+radiusMin) {
                 bInitial = false;
-                if (dis<myBalls[i].radius && myBalls[i].bFinalized) {
+                if (dis<myBalls[i].radius && myBalls[i].bFinalized&& myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT && !myBalls[i].bFolloer) {
                     touchOption = DRAG_BALL;
                     num = i;
                 }
@@ -105,7 +127,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             dis = myBalls[i].location.distance(touchPos);
             if (dis <myBalls[i].radius+radiusMin) {
                 bInitial = false;
-                if (dis<myBalls[i].radius&& myBalls[i].bFinalized) {
+                if (dis<myBalls[i].radius&& myBalls[i].bFinalized&& myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT&& !myBalls[i].bFolloer) {
                     touchOption = DRAG_BALL;
                     num = i;
                 }
@@ -137,7 +159,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             temp.touchID = touch.id;
             temp.ballID = ID_TOP_BALL;
             myBalls.push_back(temp);
-            myMatter[0].amount--;
+            myMatter[0].amount-=5;
             
         }
             break;
@@ -157,7 +179,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             temp.touchID = touch.id;
             temp.ballID = ID_BOT_BALL;
             myBalls.push_back(temp);
-            myMatter[1].amount--;
+            myMatter[1].amount-=5;
         }
             break;
             
@@ -167,11 +189,54 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             myBalls[num].touchID = touch.id;
             }
             break;
+            
+        case INITI_OBSTACLE_TOP:{
+            
+            if (myMatter[0].amount>=100) {
+                Ball temp;
+                temp.color.set(0,255,30);
+                temp.location.set(obtaclePos);
+                temp.followPos.set(obtaclePos);
+                
+                temp.bounce = bounce;
+                temp.damping = friction;
+                temp.radius = radiusMin;
+                temp.radiusMax = radiusMax;
+                temp.massMax =  massMax;
+                temp.touchID = touch.id;
+                temp.ballID = ID_OBTACLE_TOP;
+                temp.bObstacle = true;
+                
+                myBalls.push_back(temp);
+                myMatter[0].amount-=50;
+            }
+        }
+            break;
+            
+        case INITI_OBSTACLE_BOT:{
+            
+            if (myMatter[0].amount>=100) {
+
+                Ball temp;
+                temp.color.set(255,0,30);
+                temp.location.set(obtaclePos);
+                temp.followPos.set(obtaclePos);
+                
+                temp.bounce = bounce;
+                temp.damping = friction;
+                temp.radius = radiusMin;
+                temp.radiusMax = radiusMax;
+                temp.massMax =  massMax;
+                temp.touchID = touch.id;
+                temp.ballID = ID_OBTACLE_BOT;
+                temp.bObstacle = true;
+                
+                myBalls.push_back(temp);
+                myMatter[0].amount-=50;
+            }
+        }
+            break;
     }
-    
-    
-    
-    
     
 }
 
