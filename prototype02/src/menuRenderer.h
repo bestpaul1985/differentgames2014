@@ -31,7 +31,6 @@ public:
     void setup(string name){
     
         parameters.setName(name);
-        parameters.add(matter.set("Matter",4,1,4));
         parameters.add(trap.set("trap",false));
         parameters.add(eat.set("eat", false));
         parameters.add(shrink.set("Shrink", false));
@@ -39,7 +38,7 @@ public:
     }
     
     ofParameterGroup parameters;
-    ofParameter<float> matter;
+    
     ofParameter<bool> trap;
     ofParameter<bool> eat;
     ofParameter<bool> shrink;
@@ -51,13 +50,13 @@ public:
     void setup(string name){
 
         parameters.setName(name);
-        parameters.add(score.set("Score",10,1,20));
-        parameters.add(timer.set("Time",1,1,120));
+        parameters.add(matter.set("Matter",400,0,400));
+        parameters.add(timer.set("Time",60,5,120));
 
     };
     
+    ofParameter<int> matter;
     ofParameterGroup parameters;
-    ofParameter<int> score;
     ofParameter<int> timer;
 
     

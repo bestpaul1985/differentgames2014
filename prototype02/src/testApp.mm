@@ -4,8 +4,8 @@
 void testApp::setup(){
 	
     ofSetVerticalSync(true);
-	ofSetCircleResolution(100);
 	ofEnableSmoothing();
+    ofSetCircleResolution(30);
 	ofEnableAlphaBlending();
     ofTrueTypeFont::setGlobalDpi(72);
 
@@ -18,8 +18,8 @@ void testApp::setup(){
 	ofxGuiSetDefaultHeight(42);
     
     BallSetting.setup("Ball");
-    FieldSetting.setup("Field");
-    WinningSetting.setup("Win");
+    FieldSetting.setup("SPECIAL");
+    WinningSetting.setup("OTHERS");
     
     gui.setup("What is in your mind ?");
     gui.add(BallSetting.parameters);
@@ -29,7 +29,6 @@ void testApp::setup(){
     
     // we set scenes here
     currentScene = 0;
-    
     scenes[0] = new baseScene();
     scenes[1] = new gameplay();
     
@@ -135,17 +134,16 @@ void testApp::menu_done(){
     float myBounce = ofMap(BallSetting.bounce, 1, 4, 0.4f, 1.0f);
     float myFriction = ofMap(BallSetting.friction, 1, 4, 0.001f, 0.01f);
     int myRadiusMax = ofMap(BallSetting.radiusMax, 1, 4, 40, 120);
-    int matterAmount= ofMap(FieldSetting.matter, 1, 4, 100, 400);
 
     ((gameplay*)scenes[1])->setBounce(myBounce);
     ((gameplay*)scenes[1])->setFriction(myFriction);
     ((gameplay*)scenes[1])->setRadiusMax(myRadiusMax);
-    ((gameplay*)scenes[1])->setMatter(matterAmount);
     ((gameplay*)scenes[1])->setEat(FieldSetting.eat);
     ((gameplay*)scenes[1])->setTrap(FieldSetting.trap);
     ((gameplay*)scenes[1])->setShrink(FieldSetting.shrink);
     ((gameplay*)scenes[1])->setStartTime(ofGetElapsedTimef());
-    ((gameplay*)scenes[1])->setTimer(WinningSetting.timer);
+    ((gameplay*)scenes[1])->setMatter(WinningSetting.matter);
+    ((gameplay*)scenes[1])->setTotalTime(WinningSetting.timer);
     ((gameplay*)scenes[1])->setSceneNum(currentScene);
     
     currentScene = 1;

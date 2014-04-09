@@ -5,42 +5,92 @@ matter::matter(){
     color.set(134, 60, 227);
     totalAmount = 400;
 }
-
+//------------------------------------------------------
 void matter::initial(int Num){
 
     num = Num;
-    image[0].loadImage("image/front.png");
-    pos.set(0,0);
+    h = 120;
+    
+    if (num == 0) {
+        image.loadImage("image/frontFull.png");
+        pos.set(40,40);
+        imagePos.set(0, 0);
+    }
+    
     if (num == 1) {
-        pos.set(ofGetWidth()-image[0].getWidth(),ofGetHeight()-image[0].getHeight());
+        image.loadImage("image/frontFull02.png");
+        pos.set(ofGetWidth()-40-120,ofGetHeight()-40-120);
+        imagePos.set(0,ofGetHeight()-200);
     }
+    
+    font.loadFont("font/faucet.ttf", 20);
 }
-
+//------------------------------------------------------
 void matter::update(){
-
+    
     h = ofMap(amount, 0, totalAmount, 120, 0);
-    if (num==1) {
-        h*=-1;
-    }
-}
+    if (num == 1) h *= -1;
+    
+   
+    if (lastAmount != amount) {
+        int d = amount-lastAmount;
+        string s;
+        if (d>0) {
+            s = "+ "+ ofToString(d);
+        }else{
+            s = "- "+ ofToString(d);
+        }
+        changer temp;
+        if (num == 0) temp.setup(100, 100, 0, font, s);
+        if (num == 1) temp.setup(ofGetWidth()-120, ofGetHeight()-120, 1, font, s);
 
+        Changer.push_back(temp);
+    }
+    
+    lastAmount = amount;
+   
+}
+//------------------------------------------------------
 void matter::draw(){
 
-    
-    
-    ofSetRectMode(OF_RECTMODE_CENTER);
+    ofSetColor(255,221,0);
+    ofPushMatrix();
+    ofTranslate(pos.x, pos.y-h);
+    ofRect(0,0,120,120);
+    ofPopMatrix();
     ofSetColor(255);
-    ofRect(pos.x+image[0].getWidth()/2, pos.y+image[0].getHeight()/2, 120,120);
+    image.draw(imagePos, image.getWidth(),image.getHeight());
     
-    ofSetColor(255,220,0);
-    ofRect(pos.x+image[0].getWidth()/2, pos.y+image[0].getHeight()/2-h, 120, 120);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-
-    ofSetColor(255);
-    image[0].draw(pos, image[0].getWidth(),image[0].getHeight());
+    
+    for (int i=0; i<Changer.size(); i++) {
+        Changer[i].draw();
+        if (Changer[i].bRemove) {
+            Changer.erase(Changer.begin()+i);
+        }
+    }
+    
+    
+    string s = ofToString(amount);
+    if (num == 0) {
+        ofPushMatrix();
+        ofTranslate(100,100);
+        ofRotateZ(180);
+        ofSetColor(180, 255);
+        font.drawString(s, -(int)font.stringWidth(s)/2,(int)font.stringHeight(s)/2);
+        ofPopMatrix();
+    }
+    
+    if (num == 1) {
+        ofPushMatrix();
+        ofTranslate(768-100,1024-100);
+        ofSetColor(180, 255);
+        font.drawString(s, -(int)font.stringWidth(s)/2,(int)font.stringHeight(s)/2);
+        ofPopMatrix();
+    }
+    
     
 }
-
+//------------------------------------------------------
 void matter::setAmount(int Amount){
     amount = Amount;
 }

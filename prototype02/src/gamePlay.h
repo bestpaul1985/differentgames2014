@@ -9,6 +9,7 @@
 #include "score.h"
 #include "obstacle.h"
 #include "timer.h"
+#include "circleButton.h"
 enum E_OPTION{ NO_INITI,
                INITI_TOP_BALL,
                INITI_BOT_BALL,
@@ -60,9 +61,9 @@ public:
     void setMatter(int Matter);
     void setMassMax(int MassMax);
     void setStartTime(float time);
-    void setTimer(float time);
+    void setTotalTime(float time);
     void setSceneNum(int &Scene);
-    
+    void reset();
     field           myField;
     matter          myMatter[2];
     trap            myTrap;
@@ -75,11 +76,13 @@ public:
     
     bool            bTrap, bEat, bShrink, bGameOver;
     float           friction,bounce,radiusMax,radiusMin,massMax,abstacleMax,abstacleMin,abstacleSpeed,overTimer;
-    int *           scene;
+    int             *scene;
     gola            golaTop, golaBot;
     score           Score;
     obstacle        Obstacle;
     timer           Timer;
+    circleButton    returnbutton;
     ofTrueTypeFont  font;
+    int             ballCast, obstacleCast;
 };
 

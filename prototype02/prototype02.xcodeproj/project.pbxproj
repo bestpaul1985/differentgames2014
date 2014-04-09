@@ -35,6 +35,7 @@
 		F921717D18F4F35F005F407A /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F921717B18F4F35F005F407A /* timer.cpp */; };
 		F93C8BD418D0D9C2003CED47 /* ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93C8BD218D0D9C2003CED47 /* ball.cpp */; };
 		F93C8BDB18D12A42003CED47 /* field.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93C8BD918D12A42003CED47 /* field.cpp */; };
+		F93D5BF618F5B8850007BD81 /* circleButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93D5BF418F5B8850007BD81 /* circleButton.cpp */; };
 		F9408DEF18E9BCA700E51354 /* menuRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9408DEE18E9BCA700E51354 /* menuRenderer.cpp */; };
 		F9AC5ECE18D1F6900059D934 /* gamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9AC5ECC18D1F6900059D934 /* gamePlay.cpp */; };
 		F9AC5EDB18D211260059D934 /* matter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9AC5ED918D211260059D934 /* matter.cpp */; };
@@ -106,6 +107,8 @@
 		F93C8BD318D0D9C2003CED47 /* ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ball.h; sourceTree = "<group>"; };
 		F93C8BD918D12A42003CED47 /* field.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = field.cpp; sourceTree = "<group>"; };
 		F93C8BDA18D12A42003CED47 /* field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = field.h; sourceTree = "<group>"; };
+		F93D5BF418F5B8850007BD81 /* circleButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = circleButton.cpp; sourceTree = "<group>"; };
+		F93D5BF518F5B8850007BD81 /* circleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = circleButton.h; sourceTree = "<group>"; };
 		F9408DEC18E9BA8D00E51354 /* menuRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = menuRenderer.h; sourceTree = "<group>"; };
 		F9408DEE18E9BCA700E51354 /* menuRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menuRenderer.cpp; sourceTree = "<group>"; };
 		F9AC5ECA18D1F5CA0059D934 /* baseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseScene.h; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 				F9EE2F9818F48DA0006011C1 /* obstacle.h */,
 				F921717B18F4F35F005F407A /* timer.cpp */,
 				F921717C18F4F35F005F407A /* timer.h */,
+				F93D5BF418F5B8850007BD81 /* circleButton.cpp */,
+				F93D5BF518F5B8850007BD81 /* circleButton.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -440,6 +445,7 @@
 				F9C7AAB018DA746E0053C6A9 /* ofxGuiGroup.cpp in Sources */,
 				F9AC5EDB18D211260059D934 /* matter.cpp in Sources */,
 				F9C7AAB518DA746E0053C6A9 /* ofxToggle.cpp in Sources */,
+				F93D5BF618F5B8850007BD81 /* circleButton.cpp in Sources */,
 				F93C8BD418D0D9C2003CED47 /* ball.cpp in Sources */,
 				F9C8CB4718D28F5F00BA3BDC /* Button.cpp in Sources */,
 			);

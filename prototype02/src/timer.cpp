@@ -19,9 +19,11 @@ void timer::setup(){
 void timer::update(){
 
     timer = totalTime - (ofGetElapsedTimef() - startTime);
+    
     if (timer<0) {
         timer = 0;
     }
+    
 }
 
 void timer::draw(){

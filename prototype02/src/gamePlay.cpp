@@ -14,7 +14,7 @@ void gameplay::setup(){
     bGameOver = false;
     massMax = 5;
     radiusMin = 20;
-    abstacleMax = 30;
+    abstacleMax = 20;
     abstacleMin = 5;
     abstacleSpeed = 1;
     golaTop.setup(0);
@@ -24,11 +24,15 @@ void gameplay::setup(){
     Timer.setup();
     overStep = NOT_START;
     font.loadFont("font/faucet.ttf", 100);
+    returnbutton.setup(ofGetWidth()/2,ofGetHeight()/2);
+    ballCast = 5;
+    obstacleCast = 10;
 }
 
 //--------------------------------------------------------------
 void gameplay::update(){
     
+    Timer.update();
     checkGameover();
     myMatter[0].update();
     myMatter[1].update();
@@ -43,7 +47,8 @@ void gameplay::update(){
     
 	checkCollision();
     addTrap();
-    Timer.update();
+   
+    
 }
 
 //--------------------------------------------------------------
@@ -54,13 +59,14 @@ void gameplay::draw(){
         case NOT_START:{
             
             myField.draw();
-            Obstacle.draw();
+            if (myMatter[0].amount > 100)  Obstacle.drawTop();
+            if (myMatter[1].amount > 100)  Obstacle.drawBot();
             Score.draw();
             Timer.draw();
-            golaTop.draw();
-            golaBot.draw();
             myMatter[0].draw();
             myMatter[1].draw();
+            golaTop.draw();
+            golaBot.draw();
             myTrap.draw();
             
             for(int i=0; i<myBalls.size(); i++) {
@@ -77,13 +83,14 @@ void gameplay::draw(){
             ofPushMatrix();
             ofTranslate(ofRandom(-5,5),ofRandom(-5,5));
             myField.draw();
-            Obstacle.draw();
+            if (myMatter[0].amount > 100)  Obstacle.drawTop();
+            if (myMatter[1].amount > 100)  Obstacle.drawBot();
             Score.draw();
             Timer.draw();
-            golaTop.draw();
-            golaBot.draw();
             myMatter[0].draw();
             myMatter[1].draw();
+            golaTop.draw();
+            golaBot.draw();
             myTrap.draw();
             
             for(int i=0; i<myBalls.size(); i++) {
@@ -99,13 +106,14 @@ void gameplay::draw(){
         case STEP_TWO:{
            
             myField.draw();
-            Obstacle.draw();
+            if (myMatter[0].amount > 100)  Obstacle.drawTop();
+            if (myMatter[1].amount > 100)  Obstacle.drawBot();
             Score.draw();
             Timer.draw();
-            golaTop.draw();
-            golaBot.draw();
             myMatter[0].draw();
             myMatter[1].draw();
+            golaTop.draw();
+            golaBot.draw();
             myTrap.draw();
             
             for(int i=0; i<myBalls.size(); i++) {
@@ -116,8 +124,7 @@ void gameplay::draw(){
             
             ofSetColor(30, 100);
             ofRect(0, 0, ofGetWidth(), ofGetHeight());
-            ofSetColor(255,255);
-            ofCircle(ofGetWidth()/2, ofGetHeight()/2, 30+abs(30*sin(ofGetElapsedTimef())));
+            returnbutton.draw();
         }
             break;
       
@@ -125,11 +132,13 @@ void gameplay::draw(){
     
    }
 
-
 //--------------------------------------------------------------
 void gameplay::touchDown(ofTouchEventArgs & touch){
     
-    if (bGameOver) return;
+    if (bGameOver) {
+        returnbutton.touchDown(touch.x, touch.y);
+        return;
+    }
     
     ofPoint touchPos(touch.x,touch.y);
     bool bInitial = true;
@@ -244,7 +253,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             temp.touchID = touch.id;
             temp.ballID = ID_TOP_BALL;
             myBalls.push_back(temp);
-            myMatter[0].amount-=5;
+            myMatter[0].amount-=ballCast;
             
         }
             break;
@@ -264,7 +273,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             temp.touchID = touch.id;
             temp.ballID = ID_BOT_BALL;
             myBalls.push_back(temp);
-            myMatter[1].amount-=5;
+            myMatter[1].amount-=ballCast;
         }
             break;
             
@@ -293,7 +302,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
                 temp.bObstacle = true;
                 temp.obstacleID = obtacleNum;
                 myBalls.push_back(temp);
-                myMatter[0].amount-=10;
+                myMatter[0].amount-=obstacleCast;
             }
         }
             break;
@@ -317,7 +326,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
                 temp.bObstacle = true;
                 temp.obstacleID = obtacleNum;
                 myBalls.push_back(temp);
-                myMatter[1].amount-=10;
+                myMatter[1].amount-=obstacleCast;
             }
         }
             break;
@@ -341,7 +350,10 @@ void gameplay::touchMoved(ofTouchEventArgs & touch){
 //--------------------------------------------------------------
 void gameplay::touchUp(ofTouchEventArgs & touch){
     
-    if (bGameOver) return;
+    if (bGameOver){
+        returnbutton.touchUp(touch.x, touch.y);
+        return;
+    }
     for (int i=0; i<myBalls.size(); i++) {
         if (myBalls[i].touchID == touch.id ) {
             myBalls[i].bFinalized = true;
@@ -419,7 +431,7 @@ void gameplay::checkBallRadius(){
             
                
                 myBalls[i].radius+=Obstacle.topSpeed[myBalls[i].obstacleID];
-                myMatter[0].amount -=Obstacle.topSpeed[myBalls[i].obstacleID];
+                myMatter[0].amount -=Obstacle.topSpeed[myBalls[i].obstacleID]*2;
                 if (myBalls[i].radius>abstacleMax) {
                     myBalls[i].radius = abstacleMax;
                     myBalls[i].bFinalized = !myBalls[i].bFinalized;
@@ -431,7 +443,7 @@ void gameplay::checkBallRadius(){
             else if(myBalls[i].ballID == ID_OBTACLE_BOT){
                 
                 myBalls[i].radius += Obstacle.botSpeed[myBalls[i].obstacleID];
-                myMatter[1].amount -=Obstacle.botSpeed[myBalls[i].obstacleID];
+                myMatter[1].amount -=Obstacle.botSpeed[myBalls[i].obstacleID]*2;
                 if (myBalls[i].radius>abstacleMax) {
                     myBalls[i].radius = abstacleMax;
                     myBalls[i].bFinalized = !myBalls[i].bFinalized;
@@ -494,8 +506,6 @@ void gameplay::addTrap(){
     
    
 }
-
-
 //--------------------------------------------------------------
 void gameplay::addEat(Ball A,Ball B, int a, int b){
 
@@ -557,7 +567,7 @@ void gameplay::checkGameover(){
     switch (overStep) {
         case NOT_START:{
             
-            if (Timer.timer <= 0 && overStep == NOT_START) {
+            if (Timer.timer == 0 && overStep == NOT_START) {
                 bGameOver = true;
                 overStep = STEP_ONE;
                 overTimer = ofGetElapsedTimeMillis();
@@ -581,15 +591,18 @@ void gameplay::checkGameover(){
             break;
             
         case STEP_TWO:{
-//            if (ofGetElapsedTimeMillis()-overTimer>300) {
-//                overStep = STEP_THREE;
-//            }
+
+            if (returnbutton.bButton) {
+                
+                *scene = 0;
+                reset();
+                
+            }
         }
             break;
     }
     
 }
-
 //--------------------------------------------------------------
 void gameplay::setTrap(bool trap){
     bTrap = trap;
@@ -632,10 +645,22 @@ void gameplay::setStartTime(float time){
     Timer.startTime = time;
 }
 //--------------------------------------------------------------
-void gameplay::setTimer(float time){
+void gameplay::setTotalTime(float time){
     Timer.totalTime = time;
 }
 //--------------------------------------------------------------
 void gameplay::setSceneNum(int &Scene){
     scene = &Scene;
 }
+//--------------------------------------------------------------
+void gameplay::reset(){
+    
+    overStep = NOT_START;
+    bGameOver = false;
+    Score.scoreTop = 0;
+    Score.scoreBot = 0;
+    myBalls.clear();
+    returnbutton.bButton = false;
+    Timer.timer = 10.0;
+}
+

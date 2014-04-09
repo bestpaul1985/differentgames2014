@@ -26,13 +26,13 @@ void field::update(){
 void field::draw(){
     
     //top
-    ofSetColor(200,255);
+    ofSetColor(255,255);
     ofRect(topRect);
     ofSetColor(230,255);
     ofRect(midRectTop);
     
     //bot
-    ofSetColor(200,255);
+    ofSetColor(255,255);
     ofRect(botRect);
     ofSetColor(230,255);
     ofRect(midRectBot);
@@ -45,7 +45,7 @@ void field::draw(){
 void field::drawTop(){
 
     //top
-    ofSetColor(200,255);
+    ofSetColor(255,255);
     ofRect(topRect);
     ofSetColor(230,255);
     ofRect(midRectTop);
@@ -61,7 +61,7 @@ void field::drawBot(){
     
    
     //bot
-    ofSetColor(200,255);
+    ofSetColor(255,255);
     ofRect(botRect);
     ofSetColor(230,255);
     ofRect(midRectBot);

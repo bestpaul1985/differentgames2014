@@ -11,8 +11,8 @@
 void obstacle::setup(){
     
 
-    int maxI = 7;
-    int maxJ = 4;
+    int maxI = 15;
+    int maxJ = 6;
     int w = 768/maxI;
     int h = (512-200)/maxJ;
     
@@ -41,18 +41,24 @@ void obstacle::setup(){
     }
 }
 //-----------------------------------------------------------------
-void obstacle::draw(){
+void obstacle::drawTop(){
 
     for (int i=0; i<topPos.size(); i++) {
         ofSetColor(150,200);
-        ofCircle(topPos[i], 2);
+        ofCircle(topPos[i], 1);
     }
     
-    for (int i=0; i<botPos.size(); i++) {
-        ofSetColor(150,200);
-        ofCircle(botPos[i], 2);
-    }
-
     
 }
+
 //-----------------------------------------------------------------
+void obstacle::drawBot(){
+    
+
+    for (int i=0; i<botPos.size(); i++) {
+        ofSetColor(150,200);
+        ofCircle(botPos[i], 1);
+    }
+    
+    
+}

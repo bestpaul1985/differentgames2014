@@ -13,7 +13,9 @@
 class obstacle{
 public:
     void setup();
-    void draw();
+    void drawTop();
+    void drawBot();
+
     
     vector<ofPoint> topPos;
     vector<ofPoint> botPos;
