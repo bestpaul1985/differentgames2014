@@ -73,8 +73,9 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             dis = myBalls[i].location.distance(touchPos);
             if (dis <myBalls[i].radius+radiusMin) {
                 bInitial = false;
-                if (dis<myBalls[i].radius && myBalls[i].bFinalized && myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT&& !myBalls[i].bFolloer) {
+                if (dis<myBalls[i].radius && myBalls[i].bFinalized && myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT) {
                     touchOption = DRAG_BALL;
+                    num = i;
                 }
                 break;
             }
@@ -127,7 +128,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             dis = myBalls[i].location.distance(touchPos);
             if (dis <myBalls[i].radius+radiusMin) {
                 bInitial = false;
-                if (dis<myBalls[i].radius&& myBalls[i].bFinalized&& myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT&& !myBalls[i].bFolloer) {
+                if (dis<myBalls[i].radius&& myBalls[i].bFinalized&& myBalls[i].ballID != ID_OBTACLE_TOP && myBalls[i].ballID != ID_OBTACLE_BOT && !myBalls[i].bFolloer) {
                     touchOption = DRAG_BALL;
                     num = i;
                 }
@@ -215,7 +216,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
             
         case INITI_OBSTACLE_BOT:{
             
-            if (myMatter[0].amount>=100) {
+            if (myMatter[1].amount>=100) {
 
                 Ball temp;
                 temp.color.set(255,0,30);
@@ -232,7 +233,7 @@ void gameplay::touchDown(ofTouchEventArgs & touch){
                 temp.bObstacle = true;
                 
                 myBalls.push_back(temp);
-                myMatter[0].amount-=50;
+                myMatter[1].amount-=50;
             }
         }
             break;
