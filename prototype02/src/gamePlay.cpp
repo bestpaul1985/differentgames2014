@@ -662,5 +662,12 @@ void gameplay::reset(){
     myBalls.clear();
     returnbutton.bButton = false;
     Timer.timer = 10.0;
+    
+    for (int i=0; i<Obstacle.bTop.size(); i++) {
+        Obstacle.bTop[i] = false;
+    }
+    for (int i=0; i<Obstacle.bBot.size(); i++) {
+        Obstacle.bBot[i] = false;
+    }
 }
 
