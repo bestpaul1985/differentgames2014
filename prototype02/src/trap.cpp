@@ -20,18 +20,8 @@ void trap::update(){
     if (ofGetElapsedTimeMillis()-timer>3000) {
         bOpen = !bOpen;
         timer = ofGetElapsedTimeMillis();
-        int random = (int)ofRandom(0,5);
-        if (random == 0) {
-            pos.set(ofGetWidth()/2-150,ofGetHeight()/2-150);
-        }else if(random == 1){
-            pos.set(ofGetWidth()/2+150,ofGetHeight()/2-150);
-        }else if(random == 2){
-            pos.set(ofGetWidth()/2-150,ofGetHeight()/2+150);
-        }else if(random == 3){
-            pos.set(ofGetWidth()/2+150,ofGetHeight()/2+150);
-        }else {
-            pos.set(ofGetWidth()/2,ofGetHeight()/2);
-        }
+        pos.x = ofRandom(radius,ofGetWidth()-radius);
+        pos.y = ofRandom(200+radius, ofGetHeight()-200-radius);
     }
 }
 

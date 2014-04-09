@@ -21,6 +21,10 @@ void obstacle::setup(){
             ofPoint pos;
             pos.set(w+w*i, 200+h*j);
             topPos.push_back(pos);
+            bool bTemp = false;
+            bTop.push_back(bTemp);
+            float temSpeed = 1;
+            topSpeed.push_back(temSpeed);
         }
     }
     
@@ -29,6 +33,10 @@ void obstacle::setup(){
             ofPoint pos;
             pos.set(w+w*i, 512+h*j);
             botPos.push_back(pos);
+            bool bTemp = false;
+            bBot.push_back(bTemp);
+            float temSpeed = 1;
+            botSpeed.push_back(temSpeed);
         }
     }
 }
@@ -36,14 +44,15 @@ void obstacle::setup(){
 void obstacle::draw(){
 
     for (int i=0; i<topPos.size(); i++) {
-        ofSetColor(150,255);
+        ofSetColor(150,200);
         ofCircle(topPos[i], 2);
     }
     
     for (int i=0; i<botPos.size(); i++) {
-        ofSetColor(150,255);
+        ofSetColor(150,200);
         ofCircle(botPos[i], 2);
     }
 
+    
 }
 //-----------------------------------------------------------------

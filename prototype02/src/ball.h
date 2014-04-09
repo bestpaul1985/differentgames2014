@@ -32,7 +32,7 @@ class Ball{
         float           radius,radiusMax;
         float           damping;
         float           alpha;
-        int             touchID;
+        int             touchID, obstacleID;
         bool            bFinalized;
         bool            bFolloer;
         bool            bJoint;

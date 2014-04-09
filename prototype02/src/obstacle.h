@@ -17,6 +17,10 @@ public:
     
     vector<ofPoint> topPos;
     vector<ofPoint> botPos;
+    vector<bool> bTop;
+    vector<bool> bBot;
+    vector<float> topSpeed;
+    vector<float> botSpeed;
     
 };
 

@@ -10,6 +10,7 @@ Ball::Ball() {
     bObstacle = false;
     alpha = 50;
     mass = 0;
+    obstacleID = -1;
 }
 //--------------------------------------------------------------
 void Ball::update() {
@@ -118,7 +119,7 @@ void Ball::follow(){
 
     if (bFolloer && !bCollided && !bObstacle) {
        
-        float maxSpeed = 25;
+        float maxSpeed = 15;
         ofPoint desired = followPos - location;
         float d = desired.length();
         desired.normalize();

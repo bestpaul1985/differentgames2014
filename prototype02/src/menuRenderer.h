@@ -52,11 +52,14 @@ public:
 
         parameters.setName(name);
         parameters.add(score.set("Score",10,1,20));
-        
+        parameters.add(timer.set("Time",1,1,120));
+
     };
     
     ofParameterGroup parameters;
     ofParameter<int> score;
+    ofParameter<int> timer;
+
     
 };
 #endif /* defined(__prototype02__menuRenderer__) */

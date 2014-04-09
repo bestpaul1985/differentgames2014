@@ -8,6 +8,7 @@ public:
     void setup();
     void update();
     void draw();
-    
-    ofRectangle topRect,botRect, midRect;
+    void drawTop();
+    void drawBot();
+    ofRectangle topRect,botRect, midRect, midRectTop,midRectBot;
 };

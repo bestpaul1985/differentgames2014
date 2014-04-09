@@ -35,6 +35,7 @@ void testApp::setup(){
     
     scenes[0]->setup();
     scenes[1]->setup();
+
 }
 
 //--------------------------------------------------------------
@@ -52,6 +53,8 @@ void testApp::draw(){
     if (currentScene==0) {
         gui.draw();
     }
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -130,7 +133,7 @@ void testApp::imageLoader(){
 void testApp::menu_done(){
     
     float myBounce = ofMap(BallSetting.bounce, 1, 4, 0.4f, 1.0f);
-    float myFriction = ofMap(BallSetting.friction, 1, 4, 0.005f, 0.02f);
+    float myFriction = ofMap(BallSetting.friction, 1, 4, 0.001f, 0.01f);
     int myRadiusMax = ofMap(BallSetting.radiusMax, 1, 4, 40, 120);
     int matterAmount= ofMap(FieldSetting.matter, 1, 4, 100, 400);
 
@@ -141,6 +144,10 @@ void testApp::menu_done(){
     ((gameplay*)scenes[1])->setEat(FieldSetting.eat);
     ((gameplay*)scenes[1])->setTrap(FieldSetting.trap);
     ((gameplay*)scenes[1])->setShrink(FieldSetting.shrink);
+    ((gameplay*)scenes[1])->setStartTime(ofGetElapsedTimef());
+    ((gameplay*)scenes[1])->setTimer(WinningSetting.timer);
+    ((gameplay*)scenes[1])->setSceneNum(currentScene);
+    
     currentScene = 1;
     
 }
