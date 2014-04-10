@@ -145,6 +145,10 @@ void testApp::menu_done(){
     ((gameplay*)scenes[1])->setShrink(BallSetting.shrink);
     ((gameplay*)scenes[1])->setTime(WorldSetting.timer);
     ((gameplay*)scenes[1])->setMatter(WorldSetting.matter);
+    ((gameplay*)scenes[1])->setBumpers(WorldSetting.bumpers);
+    ((gameplay*)scenes[1])->setGoal(WorldSetting.goal);
+    ((gameplay*)scenes[1])->setScoreboard(WorldSetting.scoreboard);
+
     
     currentScene = 1;
     
