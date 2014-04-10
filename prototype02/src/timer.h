@@ -18,7 +18,7 @@ public:
     
     ofTrueTypeFont font;
     float timer, startTime, totalTime;
-    bool bStart;
+    bool bStart, bUnlimited;
 };
 
 #endif /* defined(__prototype02__timer__) */

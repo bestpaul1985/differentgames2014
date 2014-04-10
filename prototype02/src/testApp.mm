@@ -12,20 +12,20 @@ void testApp::setup(){
     //let's setup gui
     done.addListener(this,&testApp::menu_done);
 
-    ofxGuiSetFont("font/Questrial-Regular.ttf",16,true,true);
-	ofxGuiSetTextPadding(8);
-	ofxGuiSetDefaultWidth(300);
-	ofxGuiSetDefaultHeight(42);
-    
+    ofxGuiSetFont("font/faucet.ttf",18,true,true,72);
+	ofxGuiSetTextPadding(2);
+	ofxGuiSetDefaultWidth(280);
+	ofxGuiSetDefaultHeight(30);
     BallSetting.setup("Ball");
-    FieldSetting.setup("SPECIAL");
-    WinningSetting.setup("OTHERS");
-    
-    gui.setup("What is in your mind ?");
+    WorldSetting.setup("World");
+    gui.setup("Try some things!");
+    gui.add(p1.set(" 1P",false));
+    gui.add(p2.set(" 2P",true));
+    gui.add(p3.set(" 3P",false));
+    gui.add(p4.set(" 4P",false));
     gui.add(BallSetting.parameters);
-    gui.add(FieldSetting.parameters);
-    gui.add(WinningSetting.parameters);
-    gui.add(done.setup  ("done"));
+    gui.add(WorldSetting.parameters);
+    gui.add(done.setup  (">>> Play! <<<"));
     
     // we set scenes here
     currentScene = 0;
@@ -34,6 +34,8 @@ void testApp::setup(){
     
     scenes[0]->setup();
     scenes[1]->setup();
+    ((gameplay*)scenes[1])->setSceneNum(currentScene);
+
 
 }
 
@@ -138,13 +140,11 @@ void testApp::menu_done(){
     ((gameplay*)scenes[1])->setBounce(myBounce);
     ((gameplay*)scenes[1])->setFriction(myFriction);
     ((gameplay*)scenes[1])->setRadiusMax(myRadiusMax);
-    ((gameplay*)scenes[1])->setEat(FieldSetting.eat);
-    ((gameplay*)scenes[1])->setTrap(FieldSetting.trap);
-    ((gameplay*)scenes[1])->setShrink(FieldSetting.shrink);
-    ((gameplay*)scenes[1])->setStartTime(ofGetElapsedTimef());
-    ((gameplay*)scenes[1])->setMatter(WinningSetting.matter);
-    ((gameplay*)scenes[1])->setTotalTime(WinningSetting.timer);
-    ((gameplay*)scenes[1])->setSceneNum(currentScene);
+    ((gameplay*)scenes[1])->setEat(BallSetting.eat);
+    ((gameplay*)scenes[1])->setTrap(WorldSetting.trap);
+    ((gameplay*)scenes[1])->setShrink(BallSetting.shrink);
+    ((gameplay*)scenes[1])->setTime(WorldSetting.timer);
+    ((gameplay*)scenes[1])->setMatter(WorldSetting.matter);
     
     currentScene = 1;
     

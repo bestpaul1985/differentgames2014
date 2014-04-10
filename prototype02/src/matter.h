@@ -59,4 +59,5 @@ public:
     ofImage                         image;
     ofTrueTypeFont                  font;
     vector<changer>                 Changer;
+    bool                            bUnlimited;
 };

@@ -39,11 +39,14 @@ class testApp : public ofxiOSApp{
     
         //----let's create a gui-----
         ofxPanel gui;
+        ofParameter<bool> p1;
+        ofParameter<bool> p2;
+        ofParameter<bool> p3;
+        ofParameter<bool> p4;
         ofxButton done;
     
         ballSetting         BallSetting;
-        fieldSetting        FieldSetting;
-        winningSituation    WinningSetting;
+        worldSetting        WorldSetting;
 
 };
 

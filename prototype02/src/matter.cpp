@@ -28,10 +28,11 @@ void matter::initial(int Num){
 //------------------------------------------------------
 void matter::update(){
     
+    //normal
     h = ofMap(amount, 0, totalAmount, 120, 0);
     if (num == 1) h *= -1;
     
-   
+    
     if (lastAmount != amount) {
         int d = amount-lastAmount;
         string s;
@@ -48,6 +49,12 @@ void matter::update(){
     }
     
     lastAmount = amount;
+    
+    
+    //unlimited
+    if (bUnlimited) {
+        amount = 400;
+    }
    
 }
 //------------------------------------------------------
@@ -61,7 +68,6 @@ void matter::draw(){
     ofSetColor(255);
     image.draw(imagePos, image.getWidth(),image.getHeight());
     
-    
     for (int i=0; i<Changer.size(); i++) {
         Changer[i].draw();
         if (Changer[i].bRemove) {
@@ -69,8 +75,13 @@ void matter::draw(){
         }
     }
     
+    string s;
+    if (bUnlimited) {
+        s = "Unlimited";
+    }else{
+        s = ofToString(amount);
+    }
     
-    string s = ofToString(amount);
     if (num == 0) {
         ofPushMatrix();
         ofTranslate(100,100);

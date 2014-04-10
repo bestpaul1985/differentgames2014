@@ -60,9 +60,12 @@ public:
     void setRadiusMin(float RadiusMin);
     void setMatter(int Matter);
     void setMassMax(int MassMax);
-    void setStartTime(float time);
-    void setTotalTime(float time);
+    void setTime(float time);
     void setSceneNum(int &Scene);
+    void setGoal(bool goal);
+    void setBumpers(bool bumpers);
+    void setScoreboard(bool Scoreboard);
+
     void reset();
     field           myField;
     matter          myMatter[2];
@@ -74,7 +77,7 @@ public:
 
     ofImage         image[3];
     
-    bool            bTrap, bEat, bShrink, bGameOver;
+    bool            bTrap, bEat, bShrink, bGameOver, bGoal,bBumpers,bScoreBoard;
     float           friction,bounce,radiusMax,radiusMin,massMax,abstacleMax,abstacleMin,abstacleSpeed,overTimer;
     int             *scene;
     gola            golaTop, golaBot;

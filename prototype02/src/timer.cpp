@@ -14,21 +14,25 @@ void timer::setup(){
     startTime = ofGetElapsedTimef();
     totalTime = 10.0f;
     timer = 60;
+    bUnlimited = false;
 }
 
 void timer::update(){
 
-    timer = totalTime - (ofGetElapsedTimef() - startTime);
-    
-    if (timer<0) {
-        timer = 0;
+    if (!bUnlimited) {
+        timer = totalTime - (ofGetElapsedTimef() - startTime);
+        if (timer<0)timer = 0;
     }
     
 }
 
 void timer::draw(){
-    
-    string timeString = ofToString(timer,0);
+    string timeString;
+    if (!bUnlimited) {
+         timeString = ofToString(timer,0);
+    }else{
+        timeString = "00";
+    }
     int offsetW = 30;
     int offsetH = 25;
     ofPushMatrix();
