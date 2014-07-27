@@ -35,7 +35,6 @@ void button::update(){
 void button::draw(){
     
     
-    
     ofSetColor(color);
     ofRect(rect.position.x+offset.x,rect.position.y+offset.y,rect.width,rect.height+offset.y);
     
